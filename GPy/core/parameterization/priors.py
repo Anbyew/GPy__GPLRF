@@ -544,7 +544,9 @@ class DGPLVM(Prior):
     domain = _REAL
     
     def __new__(cls, sigma2, lbl, x_shape): 
-        return super(Prior, cls).__new__(cls, sigma2, lbl, x_shape)
+        # return super(Prior, cls).__new__(cls, sigma2, lbl, x_shape)#JESUS CHRIST Dude do you know how to use SUPER class AT ALL???? HAVE YOU TESTED YOUR CODE AT ALL???
+                                                                     # more similiar error in this file
+        return super(DGPLVM, cls).__new__(cls, sigma2, lbl, x_shape)
 
     def __init__(self, sigma2, lbl, x_shape):
         self.sigma2 = sigma2
@@ -739,6 +741,51 @@ class DGPLVM(Prior):
 
     def __str__(self):
         return 'DGPLVM_prior_Raq'
+
+
+
+# ******************************************
+from scipy.sparse import csgraph
+class GPLRF(Prior):
+    """
+    Implementation of the Gaussian Process Latent Random Field model paper, by Guoqiang Zhong et. al. Implemented by Yuwei Bao
+
+    :param alpha: constant
+
+    .. Note:: GPLRF for Classification paper implementation
+
+    """
+    domain = _REAL
+    def __new__(cls, alpha, W, x_shape): 
+        return super(GPLRF, cls).__new__(cls, alpha, W, x_shape)#########TODO: MODIFY THE NEW FUNCTION
+
+    def __init__(self, alpha, W, x_shape):
+        self.alpha = alpha
+        self.x_shape = x_shape
+        self.W = W
+        self.L = csgraph.laplacian(self.W, normed=False)
+
+
+    # This function calculates log of our prior
+    def lnpdf(self, x):
+        x = x.reshape(self.x_shape)
+        return (-self.alpha / 2 * np.trace(np.transpose(x).dot(self.L).dot(x)))
+
+    # This function calculates derivative of the log of prior function
+    def lnpdf_grad(self, x):
+        x = x.reshape(self.x_shape)
+        return (-self.alpha * self.L.dot(x))
+
+
+    def __str__(self):
+        return 'GPLRF_prior_Zhong_Bao'
+
+# ******************************************
+
+
+
+
+
 
 
 # ******************************************

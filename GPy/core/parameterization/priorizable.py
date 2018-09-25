@@ -28,6 +28,7 @@ class Priorizable(Parameterizable):
         :param :class:`~GPy.priors.Prior` prior: a prior to set for this parameter
         :param bool warning: whether to warn if another prior was set for this parameter
         """
+
         repriorized = self.unset_priors()
         self._add_to_index_operations(self.priors, repriorized, prior, warning)
 

@@ -64,6 +64,7 @@ def jitchol(A, maxtries=5):
             raise linalg.LinAlgError("not pd: non-positive diagonal elements")
         jitter = diagA.mean() * 1e-6
         num_tries = 1
+
         while num_tries <= maxtries and np.isfinite(jitter):
             try:
                 L = linalg.cholesky(A + np.eye(A.shape[0]) * jitter, lower=True)

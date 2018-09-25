@@ -1,0 +1,183 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
+    <title>Coverage for GPy/kern/__init__.py: 100%</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="jquery.isonscreen.js"></script>
+    <script type="text/javascript" src="coverage_html.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(coverage.pyfile_ready);
+    </script>
+</head>
+<body class="pyfile">
+
+<div id="header">
+    <div class="content">
+        <h1>Coverage for <b>GPy/kern/__init__.py</b> :
+            <span class="pc_cov">100%</span>
+        </h1>
+
+        <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
+
+        <h2 class="stats">
+            38 statements &nbsp;
+            <span class="run hide_run shortkey_r button_toggle_run">38 run</span>
+            <span class="mis shortkey_m button_toggle_mis">0 missing</span>
+            <span class="exc shortkey_x button_toggle_exc">0 excluded</span>
+
+            
+                <span class="par run hide_run shortkey_p button_toggle_par">0 partial</span>
+            
+        </h2>
+    </div>
+</div>
+
+<div class="help_panel">
+    <img id="panel_icon" src="keybd_open.png" alt="Hide keyboard shortcuts" />
+    <p class="legend">Hot-keys on this page</p>
+    <div>
+    <p class="keyhelp">
+        <span class="key">r</span>
+        <span class="key">m</span>
+        <span class="key">x</span>
+        <span class="key">p</span> &nbsp; toggle line displays
+    </p>
+    <p class="keyhelp">
+        <span class="key">j</span>
+        <span class="key">k</span> &nbsp; next/prev highlighted chunk
+    </p>
+    <p class="keyhelp">
+        <span class="key">0</span> &nbsp; (zero) top of page
+    </p>
+    <p class="keyhelp">
+        <span class="key">1</span> &nbsp; (one) first highlighted chunk
+    </p>
+    </div>
+</div>
+
+<div id="source">
+    <table>
+        <tr>
+            <td class="linenos">
+<p id="n1" class="pln"><a href="#n1">1</a></p>
+<p id="n2" class="pln"><a href="#n2">2</a></p>
+<p id="n3" class="pln"><a href="#n3">3</a></p>
+<p id="n4" class="pln"><a href="#n4">4</a></p>
+<p id="n5" class="pln"><a href="#n5">5</a></p>
+<p id="n6" class="pln"><a href="#n6">6</a></p>
+<p id="n7" class="pln"><a href="#n7">7</a></p>
+<p id="n8" class="stm run hide_run"><a href="#n8">8</a></p>
+<p id="n9" class="stm run hide_run"><a href="#n9">9</a></p>
+<p id="n10" class="stm run hide_run"><a href="#n10">10</a></p>
+<p id="n11" class="stm run hide_run"><a href="#n11">11</a></p>
+<p id="n12" class="stm run hide_run"><a href="#n12">12</a></p>
+<p id="n13" class="stm run hide_run"><a href="#n13">13</a></p>
+<p id="n14" class="stm run hide_run"><a href="#n14">14</a></p>
+<p id="n15" class="stm run hide_run"><a href="#n15">15</a></p>
+<p id="n16" class="stm run hide_run"><a href="#n16">16</a></p>
+<p id="n17" class="stm run hide_run"><a href="#n17">17</a></p>
+<p id="n18" class="stm run hide_run"><a href="#n18">18</a></p>
+<p id="n19" class="stm run hide_run"><a href="#n19">19</a></p>
+<p id="n20" class="stm run hide_run"><a href="#n20">20</a></p>
+<p id="n21" class="stm run hide_run"><a href="#n21">21</a></p>
+<p id="n22" class="stm run hide_run"><a href="#n22">22</a></p>
+<p id="n23" class="stm run hide_run"><a href="#n23">23</a></p>
+<p id="n24" class="stm run hide_run"><a href="#n24">24</a></p>
+<p id="n25" class="stm run hide_run"><a href="#n25">25</a></p>
+<p id="n26" class="stm run hide_run"><a href="#n26">26</a></p>
+<p id="n27" class="stm run hide_run"><a href="#n27">27</a></p>
+<p id="n28" class="stm run hide_run"><a href="#n28">28</a></p>
+<p id="n29" class="stm run hide_run"><a href="#n29">29</a></p>
+<p id="n30" class="stm run hide_run"><a href="#n30">30</a></p>
+<p id="n31" class="stm run hide_run"><a href="#n31">31</a></p>
+<p id="n32" class="stm run hide_run"><a href="#n32">32</a></p>
+<p id="n33" class="stm run hide_run"><a href="#n33">33</a></p>
+<p id="n34" class="stm run hide_run"><a href="#n34">34</a></p>
+<p id="n35" class="stm run hide_run"><a href="#n35">35</a></p>
+<p id="n36" class="stm run hide_run"><a href="#n36">36</a></p>
+<p id="n37" class="stm run hide_run"><a href="#n37">37</a></p>
+<p id="n38" class="pln"><a href="#n38">38</a></p>
+<p id="n39" class="stm run hide_run"><a href="#n39">39</a></p>
+<p id="n40" class="stm run hide_run"><a href="#n40">40</a></p>
+<p id="n41" class="stm run hide_run"><a href="#n41">41</a></p>
+<p id="n42" class="stm run hide_run"><a href="#n42">42</a></p>
+<p id="n43" class="stm run hide_run"><a href="#n43">43</a></p>
+<p id="n44" class="stm run hide_run"><a href="#n44">44</a></p>
+<p id="n45" class="stm run hide_run"><a href="#n45">45</a></p>
+<p id="n46" class="stm run hide_run"><a href="#n46">46</a></p>
+
+            </td>
+            <td class="text">
+<p id="t1" class="pln"><span class="str">"""</span><span class="strut">&nbsp;</span></p>
+<p id="t2" class="pln"><span class="str">Kernel module the kernels to sit in.</span><span class="strut">&nbsp;</span></p>
+<p id="t3" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t4" class="pln"><span class="str">.. automodule:: .src</span><span class="strut">&nbsp;</span></p>
+<p id="t5" class="pln"><span class="str">   :members:</span><span class="strut">&nbsp;</span></p>
+<p id="t6" class="pln"><span class="str">   :private-members:</span><span class="strut">&nbsp;</span></p>
+<p id="t7" class="pln"><span class="str">"""</span><span class="strut">&nbsp;</span></p>
+<p id="t8" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">kern</span> <span class="key">import</span> <span class="nam">Kern</span><span class="strut">&nbsp;</span></p>
+<p id="t9" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">add</span> <span class="key">import</span> <span class="nam">Add</span><span class="strut">&nbsp;</span></p>
+<p id="t10" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">prod</span> <span class="key">import</span> <span class="nam">Prod</span><span class="strut">&nbsp;</span></p>
+<p id="t11" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">rbf</span> <span class="key">import</span> <span class="nam">RBF</span><span class="strut">&nbsp;</span></p>
+<p id="t12" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">linear</span> <span class="key">import</span> <span class="nam">Linear</span><span class="op">,</span> <span class="nam">LinearFull</span><span class="strut">&nbsp;</span></p>
+<p id="t13" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">static</span> <span class="key">import</span> <span class="nam">Bias</span><span class="op">,</span> <span class="nam">White</span><span class="op">,</span> <span class="nam">Fixed</span><span class="op">,</span> <span class="nam">WhiteHeteroscedastic</span><span class="op">,</span> <span class="nam">Precomputed</span><span class="strut">&nbsp;</span></p>
+<p id="t14" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">brownian</span> <span class="key">import</span> <span class="nam">Brownian</span><span class="strut">&nbsp;</span></p>
+<p id="t15" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">stationary</span> <span class="key">import</span> <span class="nam">Exponential</span><span class="op">,</span> <span class="nam">OU</span><span class="op">,</span> <span class="nam">Matern32</span><span class="op">,</span> <span class="nam">Matern52</span><span class="op">,</span> <span class="nam">ExpQuad</span><span class="op">,</span> <span class="nam">RatQuad</span><span class="op">,</span> <span class="nam">Cosine</span><span class="strut">&nbsp;</span></p>
+<p id="t16" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">mlp</span> <span class="key">import</span> <span class="nam">MLP</span><span class="strut">&nbsp;</span></p>
+<p id="t17" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">periodic</span> <span class="key">import</span> <span class="nam">PeriodicExponential</span><span class="op">,</span> <span class="nam">PeriodicMatern32</span><span class="op">,</span> <span class="nam">PeriodicMatern52</span><span class="strut">&nbsp;</span></p>
+<p id="t18" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">standard_periodic</span> <span class="key">import</span> <span class="nam">StdPeriodic</span><span class="strut">&nbsp;</span></p>
+<p id="t19" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">independent_outputs</span> <span class="key">import</span> <span class="nam">IndependentOutputs</span><span class="op">,</span> <span class="nam">Hierarchical</span><span class="strut">&nbsp;</span></p>
+<p id="t20" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">coregionalize</span> <span class="key">import</span> <span class="nam">Coregionalize</span><span class="strut">&nbsp;</span></p>
+<p id="t21" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">ODE_UY</span> <span class="key">import</span> <span class="nam">ODE_UY</span><span class="strut">&nbsp;</span></p>
+<p id="t22" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">ODE_UYC</span> <span class="key">import</span> <span class="nam">ODE_UYC</span><span class="strut">&nbsp;</span></p>
+<p id="t23" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">ODE_st</span> <span class="key">import</span> <span class="nam">ODE_st</span><span class="strut">&nbsp;</span></p>
+<p id="t24" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">ODE_t</span> <span class="key">import</span> <span class="nam">ODE_t</span><span class="strut">&nbsp;</span></p>
+<p id="t25" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">poly</span> <span class="key">import</span> <span class="nam">Poly</span><span class="strut">&nbsp;</span></p>
+<p id="t26" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">eq_ode2</span> <span class="key">import</span> <span class="nam">EQ_ODE2</span><span class="strut">&nbsp;</span></p>
+<p id="t27" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">integral</span> <span class="key">import</span> <span class="nam">Integral</span><span class="strut">&nbsp;</span></p>
+<p id="t28" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">integral_limits</span> <span class="key">import</span> <span class="nam">Integral_Limits</span><span class="strut">&nbsp;</span></p>
+<p id="t29" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">multidimensional_integral_limits</span> <span class="key">import</span> <span class="nam">Multidimensional_Integral_Limits</span><span class="strut">&nbsp;</span></p>
+<p id="t30" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">eq_ode1</span> <span class="key">import</span> <span class="nam">EQ_ODE1</span><span class="strut">&nbsp;</span></p>
+<p id="t31" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">trunclinear</span> <span class="key">import</span> <span class="nam">TruncLinear</span><span class="op">,</span><span class="nam">TruncLinear_inf</span><span class="strut">&nbsp;</span></p>
+<p id="t32" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">splitKern</span> <span class="key">import</span> <span class="nam">SplitKern</span><span class="op">,</span><span class="nam">DEtime</span><span class="strut">&nbsp;</span></p>
+<p id="t33" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">splitKern</span> <span class="key">import</span> <span class="nam">DEtime</span> <span class="key">as</span> <span class="nam">DiffGenomeKern</span><span class="strut">&nbsp;</span></p>
+<p id="t34" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">spline</span> <span class="key">import</span> <span class="nam">Spline</span><span class="strut">&nbsp;</span></p>
+<p id="t35" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">basis_funcs</span> <span class="key">import</span> <span class="nam">LogisticBasisFuncKernel</span><span class="op">,</span> <span class="nam">LinearSlopeBasisFuncKernel</span><span class="op">,</span> <span class="nam">BasisFuncKernel</span><span class="op">,</span> <span class="nam">ChangePointBasisFuncKernel</span><span class="op">,</span> <span class="nam">DomainKernel</span><span class="op">,</span> <span class="nam">PolynomialBasisFuncKernel</span><span class="strut">&nbsp;</span></p>
+<p id="t36" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">grid_kerns</span> <span class="key">import</span> <span class="nam">GridRBF</span><span class="strut">&nbsp;</span></p>
+<p id="t37" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">symmetric</span> <span class="key">import</span> <span class="nam">Symmetric</span><span class="strut">&nbsp;</span></p>
+<p id="t38" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t39" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">sde_matern</span> <span class="key">import</span> <span class="nam">sde_Matern32</span><span class="strut">&nbsp;</span></p>
+<p id="t40" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">sde_matern</span> <span class="key">import</span> <span class="nam">sde_Matern52</span><span class="strut">&nbsp;</span></p>
+<p id="t41" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">sde_linear</span> <span class="key">import</span> <span class="nam">sde_Linear</span><span class="strut">&nbsp;</span></p>
+<p id="t42" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">sde_standard_periodic</span> <span class="key">import</span> <span class="nam">sde_StdPeriodic</span><span class="strut">&nbsp;</span></p>
+<p id="t43" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">sde_static</span> <span class="key">import</span> <span class="nam">sde_White</span><span class="op">,</span> <span class="nam">sde_Bias</span><span class="strut">&nbsp;</span></p>
+<p id="t44" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">sde_stationary</span> <span class="key">import</span> <span class="nam">sde_RBF</span><span class="op">,</span><span class="nam">sde_Exponential</span><span class="op">,</span><span class="nam">sde_RatQuad</span><span class="strut">&nbsp;</span></p>
+<p id="t45" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">sde_brownian</span> <span class="key">import</span> <span class="nam">sde_Brownian</span><span class="strut">&nbsp;</span></p>
+<p id="t46" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">src</span><span class="op">.</span><span class="nam">multioutput_kern</span> <span class="key">import</span> <span class="nam">MultioutputKern</span><span class="strut">&nbsp;</span></p>
+
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div id="footer">
+    <div class="content">
+        <p>
+            <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.1</a>,
+            created at 2018-09-12 14:18
+        </p>
+    </div>
+</div>
+
+</body>
+</html>

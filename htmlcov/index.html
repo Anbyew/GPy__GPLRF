@@ -1,0 +1,2612 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Coverage report</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.ba-throttle-debounce.min.js"></script>
+    <script type="text/javascript" src="jquery.tablesorter.min.js"></script>
+    <script type="text/javascript" src="jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="coverage_html.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(coverage.index_ready);
+    </script>
+</head>
+<body class="indexfile">
+
+<div id="header">
+    <div class="content">
+        <h1>Coverage report:
+            <span class="pc_cov">14%</span>
+        </h1>
+
+        <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
+
+        <form id="filter_container">
+            <input id="filter" type="text" value="" placeholder="filter..." />
+        </form>
+    </div>
+</div>
+
+<div class="help_panel">
+    <img id="panel_icon" src="keybd_open.png" alt="Hide keyboard shortcuts" />
+    <p class="legend">Hot-keys on this page</p>
+    <div>
+    <p class="keyhelp">
+        <span class="key">n</span>
+        <span class="key">s</span>
+        <span class="key">m</span>
+        <span class="key">x</span>
+        
+        <span class="key">b</span>
+        <span class="key">p</span>
+        
+        <span class="key">c</span> &nbsp; change column sorting
+    </p>
+    </div>
+</div>
+
+<div id="index">
+    <table class="index">
+        <thead>
+            
+            <tr class="tablehead" title="Click to sort">
+                <th class="name left headerSortDown shortkey_n">Module</th>
+                <th class="shortkey_s">statements</th>
+                <th class="shortkey_m">missing</th>
+                <th class="shortkey_x">excluded</th>
+                
+                <th class="shortkey_b">branches</th>
+                <th class="shortkey_p">partial</th>
+                
+                <th class="right shortkey_c">coverage</th>
+            </tr>
+        </thead>
+        
+        <tfoot>
+            <tr class="total">
+                <td class="name left">Total</td>
+                <td>20990</td>
+                <td>17335</td>
+                <td>978</td>
+                
+                <td>5650</td>
+                <td>17</td>
+                
+                <td class="right" data-ratio="3683 26640">14%</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy___init___py.html">GPy/__init__.py</a></td>
+                <td>37</td>
+                <td>9</td>
+                <td>5</td>
+                
+                <td>6</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="30 43">70%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_core___init___py.html">GPy/core/__init__.py</a></td>
+                <td>25</td>
+                <td>13</td>
+                <td>1</td>
+                
+                <td>4</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="12 29">41%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_core_gp_py.html">GPy/core/gp.py</a></td>
+                <td>298</td>
+                <td>254</td>
+                <td>13</td>
+                
+                <td>116</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="44 414">11%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_core_gp_grid_py.html">GPy/core/gp_grid.py</a></td>
+                <td>58</td>
+                <td>44</td>
+                <td>0</td>
+                
+                <td>10</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="14 68">21%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_core_mapping_py.html">GPy/core/mapping.py</a></td>
+                <td>32</td>
+                <td>17</td>
+                <td>5</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="15 32">47%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_core_model_py.html">GPy/core/model.py</a></td>
+                <td>55</td>
+                <td>37</td>
+                <td>3</td>
+                
+                <td>4</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="18 59">31%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_core_parameterization___init___py.html">GPy/core/parameterization/__init__.py</a></td>
+                <td>5</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 5">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_core_parameterization_param_py.html">GPy/core/parameterization/param.py</a></td>
+                <td>5</td>
+                <td>0</td>
+                <td>1</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 5">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_core_parameterization_parameterized_py.html">GPy/core/parameterization/parameterized.py</a></td>
+                <td>5</td>
+                <td>0</td>
+                <td>1</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 5">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_core_parameterization_priorizable_py.html">GPy/core/parameterization/priorizable.py</a></td>
+                <td>53</td>
+                <td>42</td>
+                <td>0</td>
+                
+                <td>38</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="11 91">12%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_core_parameterization_priors_py.html">GPy/core/parameterization/priors.py</a></td>
+                <td>852</td>
+                <td>678</td>
+                <td>8</td>
+                
+                <td>248</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="174 1100">16%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_core_parameterization_transformations_py.html">GPy/core/parameterization/transformations.py</a></td>
+                <td>2</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="2 2">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_core_parameterization_variational_py.html">GPy/core/parameterization/variational.py</a></td>
+                <td>165</td>
+                <td>133</td>
+                <td>2</td>
+                
+                <td>34</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="32 199">16%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_core_sparse_gp_py.html">GPy/core/sparse_gp.py</a></td>
+                <td>68</td>
+                <td>48</td>
+                <td>1</td>
+                
+                <td>6</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="20 74">27%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_core_sparse_gp_mpi_py.html">GPy/core/sparse_gp_mpi.py</a></td>
+                <td>69</td>
+                <td>57</td>
+                <td>5</td>
+                
+                <td>28</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="12 97">12%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_core_svgp_py.html">GPy/core/svgp.py</a></td>
+                <td>58</td>
+                <td>46</td>
+                <td>0</td>
+                
+                <td>8</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="12 66">18%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_core_symbolic_py.html">GPy/core/symbolic.py</a></td>
+                <td>269</td>
+                <td>269</td>
+                <td>5</td>
+                
+                <td>160</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 429">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_inference___init___py.html">GPy/inference/__init__.py</a></td>
+                <td>6</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="6 6">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_inference_latent_function_inference___init___py.html">GPy/inference/latent_function_inference/__init__.py</a></td>
+                <td>45</td>
+                <td>19</td>
+                <td>5</td>
+                
+                <td>8</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="26 53">49%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_inference_latent_function_inference_dtc_py.html">GPy/inference/latent_function_inference/dtc.py</a></td>
+                <td>84</td>
+                <td>73</td>
+                <td>2</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="11 84">13%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_inference_latent_function_inference_exact_gaussian_inference_py.html">GPy/inference/latent_function_inference/exact_gaussian_inference.py</a></td>
+                <td>37</td>
+                <td>26</td>
+                <td>1</td>
+                
+                <td>8</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="11 45">24%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_inference_latent_function_inference_exact_studentt_inference_py.html">GPy/inference/latent_function_inference/exact_studentt_inference.py</a></td>
+                <td>28</td>
+                <td>20</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="8 28">29%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_inference_latent_function_inference_expectation_propagation_py.html">GPy/inference/latent_function_inference/expectation_propagation.py</a></td>
+                <td>358</td>
+                <td>294</td>
+                <td>7</td>
+                
+                <td>74</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="64 432">15%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_inference_latent_function_inference_fitc_py.html">GPy/inference/latent_function_inference/fitc.py</a></td>
+                <td>47</td>
+                <td>38</td>
+                <td>1</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="9 47">19%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_inference_latent_function_inference_gaussian_grid_inference_py.html">GPy/inference/latent_function_inference/gaussian_grid_inference.py</a></td>
+                <td>66</td>
+                <td>58</td>
+                <td>1</td>
+                
+                <td>14</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="8 80">10%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_inference_latent_function_inference_grid_posterior_py.html">GPy/inference/latent_function_inference/grid_posterior.py</a></td>
+                <td>16</td>
+                <td>9</td>
+                <td>2</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="7 16">44%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_inference_latent_function_inference_inferenceX_py.html">GPy/inference/latent_function_inference/inferenceX.py</a></td>
+                <td>103</td>
+                <td>103</td>
+                <td>0</td>
+                
+                <td>36</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 139">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_inference_latent_function_inference_laplace_py.html">GPy/inference/latent_function_inference/laplace.py</a></td>
+                <td>228</td>
+                <td>208</td>
+                <td>8</td>
+                
+                <td>58</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="20 286">7%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_inference_latent_function_inference_pep_py.html">GPy/inference/latent_function_inference/pep.py</a></td>
+                <td>52</td>
+                <td>42</td>
+                <td>1</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="10 52">19%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_inference_latent_function_inference_posterior_py.html">GPy/inference/latent_function_inference/posterior.py</a></td>
+                <td>181</td>
+                <td>160</td>
+                <td>6</td>
+                
+                <td>78</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="21 259">8%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_inference_latent_function_inference_svgp_py.html">GPy/inference/latent_function_inference/svgp.py</a></td>
+                <td>80</td>
+                <td>72</td>
+                <td>1</td>
+                
+                <td>22</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="8 102">8%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_inference_latent_function_inference_var_dtc_py.html">GPy/inference/latent_function_inference/var_dtc.py</a></td>
+                <td>160</td>
+                <td>138</td>
+                <td>2</td>
+                
+                <td>50</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="22 210">10%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_inference_latent_function_inference_var_dtc_parallel_py.html">GPy/inference/latent_function_inference/var_dtc_parallel.py</a></td>
+                <td>287</td>
+                <td>267</td>
+                <td>2</td>
+                
+                <td>88</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="20 375">5%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_inference_latent_function_inference_var_gauss_py.html">GPy/inference/latent_function_inference/var_gauss.py</a></td>
+                <td>38</td>
+                <td>30</td>
+                <td>1</td>
+                
+                <td>2</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="8 40">20%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_inference_latent_function_inference_vardtc_md_py.html">GPy/inference/latent_function_inference/vardtc_md.py</a></td>
+                <td>89</td>
+                <td>78</td>
+                <td>0</td>
+                
+                <td>16</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="11 105">10%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_inference_latent_function_inference_vardtc_svi_multiout_py.html">GPy/inference/latent_function_inference/vardtc_svi_multiout.py</a></td>
+                <td>148</td>
+                <td>131</td>
+                <td>0</td>
+                
+                <td>12</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="17 160">11%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_inference_latent_function_inference_vardtc_svi_multiout_miss_py.html">GPy/inference/latent_function_inference/vardtc_svi_multiout_miss.py</a></td>
+                <td>154</td>
+                <td>138</td>
+                <td>0</td>
+                
+                <td>16</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="16 170">9%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_inference_mcmc___init___py.html">GPy/inference/mcmc/__init__.py</a></td>
+                <td>2</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="2 2">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_inference_mcmc_hmc_py.html">GPy/inference/mcmc/hmc.py</a></td>
+                <td>113</td>
+                <td>101</td>
+                <td>0</td>
+                
+                <td>34</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="12 147">8%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_inference_mcmc_samplers_py.html">GPy/inference/mcmc/samplers.py</a></td>
+                <td>57</td>
+                <td>47</td>
+                <td>3</td>
+                
+                <td>20</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="10 77">13%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_inference_optimization___init___py.html">GPy/inference/optimization/__init__.py</a></td>
+                <td>6</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="6 6">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_inference_optimization_stochastics_py.html">GPy/inference/optimization/stochastics.py</a></td>
+                <td>47</td>
+                <td>37</td>
+                <td>5</td>
+                
+                <td>12</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="10 59">17%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern___init___py.html">GPy/kern/__init__.py</a></td>
+                <td>38</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="38 38">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_ODE_UY_py.html">GPy/kern/src/ODE_UY.py</a></td>
+                <td>146</td>
+                <td>136</td>
+                <td>1</td>
+                
+                <td>128</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="10 274">4%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_ODE_UYC_py.html">GPy/kern/src/ODE_UYC.py</a></td>
+                <td>153</td>
+                <td>143</td>
+                <td>1</td>
+                
+                <td>128</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="10 281">4%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_ODE_st_py.html">GPy/kern/src/ODE_st.py</a></td>
+                <td>148</td>
+                <td>138</td>
+                <td>1</td>
+                
+                <td>70</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="10 218">5%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_ODE_t_py.html">GPy/kern/src/ODE_t.py</a></td>
+                <td>102</td>
+                <td>92</td>
+                <td>1</td>
+                
+                <td>56</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="10 158">6%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src___init___py.html">GPy/kern/src/__init__.py</a></td>
+                <td>1</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="1 1">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_add_py.html">GPy/kern/src/add.py</a></td>
+                <td>229</td>
+                <td>200</td>
+                <td>6</td>
+                
+                <td>128</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="29 357">8%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_basis_funcs_py.html">GPy/kern/src/basis_funcs.py</a></td>
+                <td>130</td>
+                <td>95</td>
+                <td>5</td>
+                
+                <td>34</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="35 164">21%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_brownian_py.html">GPy/kern/src/brownian.py</a></td>
+                <td>20</td>
+                <td>11</td>
+                <td>0</td>
+                
+                <td>4</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="9 24">38%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_coregionalize_py.html">GPy/kern/src/coregionalize.py</a></td>
+                <td>75</td>
+                <td>54</td>
+                <td>3</td>
+                
+                <td>22</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="21 97">22%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_eq_ode1_py.html">GPy/kern/src/eq_ode1.py</a></td>
+                <td>392</td>
+                <td>368</td>
+                <td>5</td>
+                
+                <td>60</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="24 452">5%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_eq_ode2_py.html">GPy/kern/src/eq_ode2.py</a></td>
+                <td>943</td>
+                <td>920</td>
+                <td>5</td>
+                
+                <td>136</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="23 1079">2%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_grid_kerns_py.html">GPy/kern/src/grid_kerns.py</a></td>
+                <td>29</td>
+                <td>13</td>
+                <td>0</td>
+                
+                <td>2</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="16 31">52%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_independent_outputs_py.html">GPy/kern/src/independent_outputs.py</a></td>
+                <td>120</td>
+                <td>102</td>
+                <td>4</td>
+                
+                <td>80</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="18 200">9%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_integral_py.html">GPy/kern/src/integral.py</a></td>
+                <td>54</td>
+                <td>37</td>
+                <td>1</td>
+                
+                <td>18</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="17 72">24%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_integral_limits_py.html">GPy/kern/src/integral_limits.py</a></td>
+                <td>54</td>
+                <td>37</td>
+                <td>1</td>
+                
+                <td>18</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="17 72">24%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_kern_py.html">GPy/kern/src/kern.py</a></td>
+                <td>158</td>
+                <td>102</td>
+                <td>24</td>
+                
+                <td>24</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="58 182">32%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_kernel_slice_operations_py.html">GPy/kern/src/kernel_slice_operations.py</a></td>
+                <td>152</td>
+                <td>78</td>
+                <td>0</td>
+                
+                <td>20</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="76 172">44%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_linear_py.html">GPy/kern/src/linear.py</a></td>
+                <td>126</td>
+                <td>88</td>
+                <td>0</td>
+                
+                <td>30</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="38 156">24%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_mlp_py.html">GPy/kern/src/mlp.py</a></td>
+                <td>96</td>
+                <td>75</td>
+                <td>0</td>
+                
+                <td>14</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="21 110">19%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_multidimensional_integral_limits_py.html">GPy/kern/src/multidimensional_integral_limits.py</a></td>
+                <td>73</td>
+                <td>55</td>
+                <td>1</td>
+                
+                <td>32</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="18 105">17%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_multioutput_kern_py.html">GPy/kern/src/multioutput_kern.py</a></td>
+                <td>88</td>
+                <td>67</td>
+                <td>0</td>
+                
+                <td>40</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="21 128">16%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_periodic_py.html">GPy/kern/src/periodic.py</a></td>
+                <td>253</td>
+                <td>223</td>
+                <td>0</td>
+                
+                <td>2</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="30 255">12%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_poly_py.html">GPy/kern/src/poly.py</a></td>
+                <td>37</td>
+                <td>22</td>
+                <td>3</td>
+                
+                <td>2</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="15 39">38%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_prod_py.html">GPy/kern/src/prod.py</a></td>
+                <td>129</td>
+                <td>109</td>
+                <td>9</td>
+                
+                <td>62</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="20 191">10%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_psi_comp___init___py.html">GPy/kern/src/psi_comp/__init__.py</a></td>
+                <td>39</td>
+                <td>20</td>
+                <td>7</td>
+                
+                <td>8</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="19 47">40%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_psi_comp_gaussherm_py.html">GPy/kern/src/psi_comp/gaussherm.py</a></td>
+                <td>76</td>
+                <td>63</td>
+                <td>1</td>
+                
+                <td>20</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="13 96">14%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_psi_comp_linear_psi_comp_py.html">GPy/kern/src/psi_comp/linear_psi_comp.py</a></td>
+                <td>54</td>
+                <td>48</td>
+                <td>0</td>
+                
+                <td>4</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="6 58">10%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_psi_comp_rbf_psi_comp_py.html">GPy/kern/src/psi_comp/rbf_psi_comp.py</a></td>
+                <td>78</td>
+                <td>68</td>
+                <td>0</td>
+                
+                <td>4</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="10 82">12%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_psi_comp_rbf_psi_gpucomp_py.html">GPy/kern/src/psi_comp/rbf_psi_gpucomp.py</a></td>
+                <td>129</td>
+                <td>113</td>
+                <td>4</td>
+                
+                <td>14</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="16 143">11%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_psi_comp_sslinear_psi_comp_py.html">GPy/kern/src/psi_comp/sslinear_psi_comp.py</a></td>
+                <td>42</td>
+                <td>36</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="6 42">14%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_psi_comp_ssrbf_psi_comp_py.html">GPy/kern/src/psi_comp/ssrbf_psi_comp.py</a></td>
+                <td>63</td>
+                <td>59</td>
+                <td>110</td>
+                
+                <td>2</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="4 65">6%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_psi_comp_ssrbf_psi_gpucomp_py.html">GPy/kern/src/psi_comp/ssrbf_psi_gpucomp.py</a></td>
+                <td>133</td>
+                <td>118</td>
+                <td>0</td>
+                
+                <td>10</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="15 143">10%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_rbf_py.html">GPy/kern/src/rbf.py</a></td>
+                <td>75</td>
+                <td>47</td>
+                <td>0</td>
+                
+                <td>10</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="28 85">33%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_sde_brownian_py.html">GPy/kern/src/sde_brownian.py</a></td>
+                <td>20</td>
+                <td>14</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="6 20">30%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_sde_linear_py.html">GPy/kern/src/sde_linear.py</a></td>
+                <td>24</td>
+                <td>17</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="7 24">29%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_sde_matern_py.html">GPy/kern/src/sde_matern.py</a></td>
+                <td>68</td>
+                <td>58</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="10 68">15%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_sde_standard_periodic_py.html">GPy/kern/src/sde_standard_periodic.py</a></td>
+                <td>73</td>
+                <td>62</td>
+                <td>1</td>
+                
+                <td>16</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="11 89">12%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_sde_static_py.html">GPy/kern/src/sde_static.py</a></td>
+                <td>39</td>
+                <td>29</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="10 39">26%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_sde_stationary_py.html">GPy/kern/src/sde_stationary.py</a></td>
+                <td>103</td>
+                <td>85</td>
+                <td>2</td>
+                
+                <td>12</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="18 115">16%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_spline_py.html">GPy/kern/src/spline.py</a></td>
+                <td>30</td>
+                <td>18</td>
+                <td>3</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="12 30">40%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_splitKern_py.html">GPy/kern/src/splitKern.py</a></td>
+                <td>154</td>
+                <td>132</td>
+                <td>1</td>
+                
+                <td>54</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="22 208">11%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_standard_periodic_py.html">GPy/kern/src/standard_periodic.py</a></td>
+                <td>84</td>
+                <td>68</td>
+                <td>1</td>
+                
+                <td>22</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="16 106">15%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_static_py.html">GPy/kern/src/static.py</a></td>
+                <td>153</td>
+                <td>91</td>
+                <td>0</td>
+                
+                <td>22</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="62 175">35%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_stationary_py.html">GPy/kern/src/stationary.py</a></td>
+                <td>311</td>
+                <td>226</td>
+                <td>8</td>
+                
+                <td>54</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="85 365">23%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_symbolic_py.html">GPy/kern/src/symbolic.py</a></td>
+                <td>46</td>
+                <td>46</td>
+                <td>1</td>
+                
+                <td>14</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 60">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_symmetric_py.html">GPy/kern/src/symmetric.py</a></td>
+                <td>79</td>
+                <td>70</td>
+                <td>1</td>
+                
+                <td>14</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="9 93">10%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_kern_src_trunclinear_py.html">GPy/kern/src/trunclinear.py</a></td>
+                <td>117</td>
+                <td>90</td>
+                <td>0</td>
+                
+                <td>34</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="27 151">18%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_likelihoods___init___py.html">GPy/likelihoods/__init__.py</a></td>
+                <td>12</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="12 12">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_likelihoods_bernoulli_py.html">GPy/likelihoods/bernoulli.py</a></td>
+                <td>99</td>
+                <td>79</td>
+                <td>5</td>
+                
+                <td>18</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="20 117">17%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_likelihoods_binomial_py.html">GPy/likelihoods/binomial.py</a></td>
+                <td>75</td>
+                <td>60</td>
+                <td>2</td>
+                
+                <td>4</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="15 79">19%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_likelihoods_exponential_py.html">GPy/likelihoods/exponential.py</a></td>
+                <td>31</td>
+                <td>18</td>
+                <td>0</td>
+                
+                <td>2</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="13 33">39%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_likelihoods_gamma_py.html">GPy/likelihoods/gamma.py</a></td>
+                <td>32</td>
+                <td>19</td>
+                <td>0</td>
+                
+                <td>2</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="13 34">38%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_likelihoods_gaussian_py.html">GPy/likelihoods/gaussian.py</a></td>
+                <td>147</td>
+                <td>103</td>
+                <td>1</td>
+                
+                <td>30</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="44 177">25%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_likelihoods_likelihood_py.html">GPy/likelihoods/likelihood.py</a></td>
+                <td>384</td>
+                <td>327</td>
+                <td>27</td>
+                
+                <td>96</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="57 480">12%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_likelihoods_link_functions_py.html">GPy/likelihoods/link_functions.py</a></td>
+                <td>106</td>
+                <td>55</td>
+                <td>8</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="51 106">48%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_likelihoods_loggaussian_py.html">GPy/likelihoods/loggaussian.py</a></td>
+                <td>115</td>
+                <td>115</td>
+                <td>0</td>
+                
+                <td>16</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 131">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_likelihoods_loglogistic_py.html">GPy/likelihoods/loglogistic.py</a></td>
+                <td>115</td>
+                <td>91</td>
+                <td>0</td>
+                
+                <td>18</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="24 133">18%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_likelihoods_mixed_noise_py.html">GPy/likelihoods/mixed_noise.py</a></td>
+                <td>60</td>
+                <td>41</td>
+                <td>0</td>
+                
+                <td>20</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="19 80">24%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_likelihoods_multioutput_likelihood_py.html">GPy/likelihoods/multioutput_likelihood.py</a></td>
+                <td>189</td>
+                <td>156</td>
+                <td>0</td>
+                
+                <td>82</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="33 271">12%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_likelihoods_poisson_py.html">GPy/likelihoods/poisson.py</a></td>
+                <td>34</td>
+                <td>17</td>
+                <td>0</td>
+                
+                <td>2</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="17 36">47%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_likelihoods_student_t_py.html">GPy/likelihoods/student_t.py</a></td>
+                <td>110</td>
+                <td>78</td>
+                <td>0</td>
+                
+                <td>4</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="32 114">28%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_likelihoods_weibull_py.html">GPy/likelihoods/weibull.py</a></td>
+                <td>107</td>
+                <td>83</td>
+                <td>0</td>
+                
+                <td>20</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="24 127">19%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_mappings___init___py.html">GPy/mappings/__init__.py</a></td>
+                <td>9</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="9 9">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_mappings_additive_py.html">GPy/mappings/additive.py</a></td>
+                <td>18</td>
+                <td>11</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="7 18">39%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_mappings_compound_py.html">GPy/mappings/compound.py</a></td>
+                <td>18</td>
+                <td>12</td>
+                <td>1</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="6 18">33%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_mappings_constant_py.html">GPy/mappings/constant.py</a></td>
+                <td>23</td>
+                <td>14</td>
+                <td>1</td>
+                
+                <td>2</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="9 25">36%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_mappings_identity_py.html">GPy/mappings/identity.py</a></td>
+                <td>14</td>
+                <td>6</td>
+                <td>1</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="8 14">57%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_mappings_kernel_py.html">GPy/mappings/kernel.py</a></td>
+                <td>19</td>
+                <td>11</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="8 19">42%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_mappings_linear_py.html">GPy/mappings/linear.py</a></td>
+                <td>29</td>
+                <td>19</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="10 29">34%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_mappings_mlp_py.html">GPy/mappings/mlp.py</a></td>
+                <td>31</td>
+                <td>23</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="8 31">26%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_mappings_mlpext_py.html">GPy/mappings/mlpext.py</a></td>
+                <td>80</td>
+                <td>69</td>
+                <td>1</td>
+                
+                <td>38</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="11 118">9%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_mappings_piecewise_linear_py.html">GPy/mappings/piecewise_linear.py</a></td>
+                <td>57</td>
+                <td>48</td>
+                <td>0</td>
+                
+                <td>6</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="9 63">14%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models___init___py.html">GPy/models/__init__.py</a></td>
+                <td>29</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="29 29">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_bayesian_gplvm_py.html">GPy/models/bayesian_gplvm.py</a></td>
+                <td>53</td>
+                <td>41</td>
+                <td>0</td>
+                
+                <td>18</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="12 71">17%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_bayesian_gplvm_minibatch_py.html">GPy/models/bayesian_gplvm_minibatch.py</a></td>
+                <td>70</td>
+                <td>58</td>
+                <td>0</td>
+                
+                <td>22</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="12 92">13%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_bcgplvm_py.html">GPy/models/bcgplvm.py</a></td>
+                <td>20</td>
+                <td>13</td>
+                <td>0</td>
+                
+                <td>2</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="7 22">32%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_dpgplvm_py.html">GPy/models/dpgplvm.py</a></td>
+                <td>6</td>
+                <td>3</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="3 6">50%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_gp_classification_py.html">GPy/models/gp_classification.py</a></td>
+                <td>34</td>
+                <td>20</td>
+                <td>0</td>
+                
+                <td>6</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="14 40">35%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_gp_coregionalized_regression_py.html">GPy/models/gp_coregionalized_regression.py</a></td>
+                <td>14</td>
+                <td>7</td>
+                <td>0</td>
+                
+                <td>2</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="7 16">44%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_gp_grid_regression_py.html">GPy/models/gp_grid_regression.py</a></td>
+                <td>9</td>
+                <td>4</td>
+                <td>0</td>
+                
+                <td>2</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 11">45%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_gp_heteroscedastic_regression_py.html">GPy/models/gp_heteroscedastic_regression.py</a></td>
+                <td>15</td>
+                <td>8</td>
+                <td>0</td>
+                
+                <td>4</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="7 19">37%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_gp_kronecker_gaussian_regression_py.html">GPy/models/gp_kronecker_gaussian_regression.py</a></td>
+                <td>59</td>
+                <td>50</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="9 59">15%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_gp_multiout_regression_py.html">GPy/models/gp_multiout_regression.py</a></td>
+                <td>99</td>
+                <td>87</td>
+                <td>10</td>
+                
+                <td>14</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="12 113">11%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_gp_multiout_regression_md_py.html">GPy/models/gp_multiout_regression_md.py</a></td>
+                <td>107</td>
+                <td>94</td>
+                <td>10</td>
+                
+                <td>20</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="13 127">10%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_gp_offset_regression_py.html">GPy/models/gp_offset_regression.py</a></td>
+                <td>38</td>
+                <td>29</td>
+                <td>1</td>
+                
+                <td>10</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="9 48">19%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_gp_regression_py.html">GPy/models/gp_regression.py</a></td>
+                <td>26</td>
+                <td>15</td>
+                <td>0</td>
+                
+                <td>2</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="11 28">39%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_gp_var_gauss_py.html">GPy/models/gp_var_gauss.py</a></td>
+                <td>14</td>
+                <td>7</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="7 14">50%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_gplvm_py.html">GPy/models/gplvm.py</a></td>
+                <td>19</td>
+                <td>12</td>
+                <td>0</td>
+                
+                <td>4</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="7 23">30%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_gradient_checker_py.html">GPy/models/gradient_checker.py</a></td>
+                <td>53</td>
+                <td>36</td>
+                <td>132</td>
+                
+                <td>22</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="17 75">23%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_ibp_lfm_py.html">GPy/models/ibp_lfm.py</a></td>
+                <td>302</td>
+                <td>269</td>
+                <td>3</td>
+                
+                <td>66</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="33 368">9%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_input_warped_gp_py.html">GPy/models/input_warped_gp.py</a></td>
+                <td>33</td>
+                <td>22</td>
+                <td>4</td>
+                
+                <td>6</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="11 39">28%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_mrd_py.html">GPy/models/mrd.py</a></td>
+                <td>188</td>
+                <td>165</td>
+                <td>2</td>
+                
+                <td>84</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="23 272">8%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_one_vs_all_classification_py.html">GPy/models/one_vs_all_classification.py</a></td>
+                <td>21</td>
+                <td>14</td>
+                <td>0</td>
+                
+                <td>4</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="7 25">28%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_one_vs_all_sparse_classification_py.html">GPy/models/one_vs_all_sparse_classification.py</a></td>
+                <td>20</td>
+                <td>16</td>
+                <td>0</td>
+                
+                <td>4</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="4 24">17%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_sparse_gp_classification_py.html">GPy/models/sparse_gp_classification.py</a></td>
+                <td>59</td>
+                <td>41</td>
+                <td>1</td>
+                
+                <td>12</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="18 71">25%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_sparse_gp_coregionalized_regression_py.html">GPy/models/sparse_gp_coregionalized_regression.py</a></td>
+                <td>25</td>
+                <td>18</td>
+                <td>0</td>
+                
+                <td>8</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="7 33">21%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_sparse_gp_minibatch_py.html">GPy/models/sparse_gp_minibatch.py</a></td>
+                <td>141</td>
+                <td>117</td>
+                <td>5</td>
+                
+                <td>40</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="24 181">13%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_sparse_gp_regression_py.html">GPy/models/sparse_gp_regression.py</a></td>
+                <td>28</td>
+                <td>19</td>
+                <td>1</td>
+                
+                <td>10</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="9 38">24%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_sparse_gp_regression_md_py.html">GPy/models/sparse_gp_regression_md.py</a></td>
+                <td>36</td>
+                <td>27</td>
+                <td>0</td>
+                
+                <td>8</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="9 44">20%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_sparse_gplvm_py.html">GPy/models/sparse_gplvm.py</a></td>
+                <td>19</td>
+                <td>12</td>
+                <td>0</td>
+                
+                <td>2</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="7 21">33%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_ss_gplvm_py.html">GPy/models/ss_gplvm.py</a></td>
+                <td>213</td>
+                <td>181</td>
+                <td>1</td>
+                
+                <td>40</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="32 253">13%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_ss_mrd_py.html">GPy/models/ss_mrd.py</a></td>
+                <td>192</td>
+                <td>165</td>
+                <td>6</td>
+                
+                <td>84</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="27 276">10%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_state_space_py.html">GPy/models/state_space.py</a></td>
+                <td>355</td>
+                <td>355</td>
+                <td>3</td>
+                
+                <td>64</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 419">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_state_space_main_py.html">GPy/models/state_space_main.py</a></td>
+                <td>1084</td>
+                <td>949</td>
+                <td>114</td>
+                
+                <td>362</td>
+                <td>6</td>
+                
+                <td class="right" data-ratio="141 1446">10%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_state_space_model_py.html">GPy/models/state_space_model.py</a></td>
+                <td>126</td>
+                <td>113</td>
+                <td>2</td>
+                
+                <td>36</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="13 162">8%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_state_space_setup_py.html">GPy/models/state_space_setup.py</a></td>
+                <td>2</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="2 2">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_tp_regression_py.html">GPy/models/tp_regression.py</a></td>
+                <td>120</td>
+                <td>94</td>
+                <td>0</td>
+                
+                <td>36</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="26 156">17%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_models_warped_gp_py.html">GPy/models/warped_gp.py</a></td>
+                <td>75</td>
+                <td>56</td>
+                <td>5</td>
+                
+                <td>12</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="19 87">22%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting_Tango_py.html">GPy/plotting/Tango.py</a></td>
+                <td>34</td>
+                <td>15</td>
+                <td>0</td>
+                
+                <td>12</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="25 46">54%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting___init___py.html">GPy/plotting/__init__.py</a></td>
+                <td>100</td>
+                <td>13</td>
+                <td>9</td>
+                
+                <td>10</td>
+                <td>5</td>
+                
+                <td class="right" data-ratio="92 110">84%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting_abstract_plotting_library_py.html">GPy/plotting/abstract_plotting_library.py</a></td>
+                <td>31</td>
+                <td>8</td>
+                <td>17</td>
+                
+                <td>2</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="23 33">70%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting_gpy_plot___init___py.html">GPy/plotting/gpy_plot/__init__.py</a></td>
+                <td>2</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="2 2">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting_gpy_plot_data_plots_py.html">GPy/plotting/gpy_plot/data_plots.py</a></td>
+                <td>98</td>
+                <td>87</td>
+                <td>7</td>
+                
+                <td>42</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="11 140">8%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting_gpy_plot_gp_plots_py.html">GPy/plotting/gpy_plot/gp_plots.py</a></td>
+                <td>116</td>
+                <td>101</td>
+                <td>11</td>
+                
+                <td>40</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="15 156">10%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting_gpy_plot_inference_plots_py.html">GPy/plotting/gpy_plot/inference_plots.py</a></td>
+                <td>17</td>
+                <td>14</td>
+                <td>0</td>
+                
+                <td>4</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="3 21">14%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting_gpy_plot_kernel_plots_py.html">GPy/plotting/gpy_plot/kernel_plots.py</a></td>
+                <td>59</td>
+                <td>52</td>
+                <td>1</td>
+                
+                <td>24</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="7 83">8%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting_gpy_plot_latent_plots_py.html">GPy/plotting/gpy_plot/latent_plots.py</a></td>
+                <td>135</td>
+                <td>121</td>
+                <td>15</td>
+                
+                <td>36</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="14 171">8%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting_gpy_plot_plot_util_py.html">GPy/plotting/gpy_plot/plot_util.py</a></td>
+                <td>179</td>
+                <td>161</td>
+                <td>22</td>
+                
+                <td>94</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="18 273">7%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting_matplot_dep___init___py.html">GPy/plotting/matplot_dep/__init__.py</a></td>
+                <td>2</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="2 2">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting_matplot_dep_base_plots_py.html">GPy/plotting/matplot_dep/base_plots.py</a></td>
+                <td>179</td>
+                <td>165</td>
+                <td>3</td>
+                
+                <td>74</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="14 253">6%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting_matplot_dep_controllers___init___py.html">GPy/plotting/matplot_dep/controllers/__init__.py</a></td>
+                <td>1</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="1 1">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting_matplot_dep_controllers_axis_event_controller_py.html">GPy/plotting/matplot_dep/controllers/axis_event_controller.py</a></td>
+                <td>81</td>
+                <td>55</td>
+                <td>7</td>
+                
+                <td>12</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="26 93">28%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting_matplot_dep_controllers_imshow_controller_py.html">GPy/plotting/matplot_dep/controllers/imshow_controller.py</a></td>
+                <td>36</td>
+                <td>24</td>
+                <td>0</td>
+                
+                <td>4</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="12 40">30%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting_matplot_dep_defaults_py.html">GPy/plotting/matplot_dep/defaults.py</a></td>
+                <td>24</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="24 24">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting_matplot_dep_img_plots_py.html">GPy/plotting/matplot_dep/img_plots.py</a></td>
+                <td>40</td>
+                <td>33</td>
+                <td>0</td>
+                
+                <td>18</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="7 58">12%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting_matplot_dep_mapping_plots_py.html">GPy/plotting/matplot_dep/mapping_plots.py</a></td>
+                <td>33</td>
+                <td>28</td>
+                <td>3</td>
+                
+                <td>12</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 45">11%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting_matplot_dep_maps_py.html">GPy/plotting/matplot_dep/maps.py</a></td>
+                <td>96</td>
+                <td>96</td>
+                <td>4</td>
+                
+                <td>34</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 130">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting_matplot_dep_plot_definitions_py.html">GPy/plotting/matplot_dep/plot_definitions.py</a></td>
+                <td>199</td>
+                <td>168</td>
+                <td>3</td>
+                
+                <td>84</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="31 283">11%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting_matplot_dep_priors_plots_py.html">GPy/plotting/matplot_dep/priors_plots.py</a></td>
+                <td>19</td>
+                <td>14</td>
+                <td>3</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 19">26%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting_matplot_dep_ssgplvm_py.html">GPy/plotting/matplot_dep/ssgplvm.py</a></td>
+                <td>19</td>
+                <td>13</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="6 19">32%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting_matplot_dep_svig_plots_py.html">GPy/plotting/matplot_dep/svig_plots.py</a></td>
+                <td>30</td>
+                <td>26</td>
+                <td>0</td>
+                
+                <td>12</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="4 42">10%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting_matplot_dep_util_py.html">GPy/plotting/matplot_dep/util.py</a></td>
+                <td>89</td>
+                <td>80</td>
+                <td>0</td>
+                
+                <td>54</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="9 143">6%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting_matplot_dep_variational_plots_py.html">GPy/plotting/matplot_dep/variational_plots.py</a></td>
+                <td>65</td>
+                <td>62</td>
+                <td>1</td>
+                
+                <td>22</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="3 87">3%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting_matplot_dep_visualize_py.html">GPy/plotting/matplot_dep/visualize.py</a></td>
+                <td>345</td>
+                <td>279</td>
+                <td>9</td>
+                
+                <td>98</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="66 443">15%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting_plotly_dep___init___py.html">GPy/plotting/plotly_dep/__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting_plotly_dep_defaults_py.html">GPy/plotting/plotly_dep/defaults.py</a></td>
+                <td>20</td>
+                <td>20</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 20">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_plotting_plotly_dep_plot_definitions_py.html">GPy/plotting/plotly_dep/plot_definitions.py</a></td>
+                <td>189</td>
+                <td>189</td>
+                <td>6</td>
+                
+                <td>74</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 263">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util___init___py.html">GPy/util/__init__.py</a></td>
+                <td>16</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="16 16">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util_block_matrices_py.html">GPy/util/block_matrices.py</a></td>
+                <td>73</td>
+                <td>65</td>
+                <td>0</td>
+                
+                <td>22</td>
+                <td>1</td>
+                
+                <td class="right" data-ratio="9 95">9%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util_choleskies_py.html">GPy/util/choleskies.py</a></td>
+                <td>73</td>
+                <td>54</td>
+                <td>4</td>
+                
+                <td>28</td>
+                <td>1</td>
+                
+                <td class="right" data-ratio="20 101">20%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util_classification_py.html">GPy/util/classification.py</a></td>
+                <td>18</td>
+                <td>16</td>
+                <td>0</td>
+                
+                <td>2</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="2 20">10%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util_cluster_with_offset_py.html">GPy/util/cluster_with_offset.py</a></td>
+                <td>30</td>
+                <td>25</td>
+                <td>46</td>
+                
+                <td>6</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 36">14%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util_config_py.html">GPy/util/config.py</a></td>
+                <td>12</td>
+                <td>2</td>
+                <td>5</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="10 12">83%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util_datasets_py.html">GPy/util/datasets.py</a></td>
+                <td>1056</td>
+                <td>956</td>
+                <td>32</td>
+                
+                <td>267</td>
+                <td>3</td>
+                
+                <td class="right" data-ratio="103 1323">8%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util_debug_py.html">GPy/util/debug.py</a></td>
+                <td>20</td>
+                <td>20</td>
+                <td>3</td>
+                
+                <td>8</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 28">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util_decorators_py.html">GPy/util/decorators.py</a></td>
+                <td>9</td>
+                <td>4</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 9">56%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util_diag_py.html">GPy/util/diag.py</a></td>
+                <td>29</td>
+                <td>20</td>
+                <td>3</td>
+                
+                <td>4</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="9 33">27%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util_functions_py.html">GPy/util/functions.py</a></td>
+                <td>6</td>
+                <td>0</td>
+                <td>12</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="6 6">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util_gpu_init_py.html">GPy/util/gpu_init.py</a></td>
+                <td>10</td>
+                <td>10</td>
+                <td>7</td>
+                
+                <td>2</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 12">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util_initialization_py.html">GPy/util/initialization.py</a></td>
+                <td>21</td>
+                <td>18</td>
+                <td>0</td>
+                
+                <td>4</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="3 25">12%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util_input_warping_functions_py.html">GPy/util/input_warping_functions.py</a></td>
+                <td>86</td>
+                <td>63</td>
+                <td>9</td>
+                
+                <td>22</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="22 108">20%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util_linalg_py.html">GPy/util/linalg.py</a></td>
+                <td>160</td>
+                <td>124</td>
+                <td>13</td>
+                
+                <td>48</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="36 208">17%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util_linalg_gpu_py.html">GPy/util/linalg_gpu.py</a></td>
+                <td>15</td>
+                <td>15</td>
+                <td>2</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 15">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util_ln_diff_erfs_py.html">GPy/util/ln_diff_erfs.py</a></td>
+                <td>59</td>
+                <td>59</td>
+                <td>1</td>
+                
+                <td>38</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 97">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util_misc_py.html">GPy/util/misc.py</a></td>
+                <td>95</td>
+                <td>67</td>
+                <td>0</td>
+                
+                <td>20</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="28 115">24%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util_mocap_py.html">GPy/util/mocap.py</a></td>
+                <td>454</td>
+                <td>391</td>
+                <td>7</td>
+                
+                <td>250</td>
+                <td>1</td>
+                
+                <td class="right" data-ratio="64 704">9%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util_multioutput_py.html">GPy/util/multioutput.py</a></td>
+                <td>52</td>
+                <td>43</td>
+                <td>0</td>
+                
+                <td>22</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="9 74">12%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util_netpbmfile_py.html">GPy/util/netpbmfile.py</a></td>
+                <td>150</td>
+                <td>150</td>
+                <td>35</td>
+                
+                <td>46</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 196">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util_normalizer_py.html">GPy/util/normalizer.py</a></td>
+                <td>56</td>
+                <td>33</td>
+                <td>7</td>
+                
+                <td>6</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="23 62">37%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util_parallel_py.html">GPy/util/parallel.py</a></td>
+                <td>40</td>
+                <td>36</td>
+                <td>0</td>
+                
+                <td>16</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="4 56">7%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util_pca_py.html">GPy/util/pca.py</a></td>
+                <td>94</td>
+                <td>78</td>
+                <td>7</td>
+                
+                <td>30</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="16 124">13%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util_quad_integrate_py.html">GPy/util/quad_integrate.py</a></td>
+                <td>48</td>
+                <td>44</td>
+                <td>0</td>
+                
+                <td>2</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="4 50">8%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util_squashers_py.html">GPy/util/squashers.py</a></td>
+                <td>9</td>
+                <td>5</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="4 9">44%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util_subarray_and_sorting_py.html">GPy/util/subarray_and_sorting.py</a></td>
+                <td>17</td>
+                <td>14</td>
+                <td>3</td>
+                
+                <td>5</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="3 22">14%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util_univariate_Gaussian_py.html">GPy/util/univariate_Gaussian.py</a></td>
+                <td>77</td>
+                <td>54</td>
+                <td>0</td>
+                
+                <td>20</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="23 97">24%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="GPy_util_warping_functions_py.html">GPy/util/warping_functions.py</a></td>
+                <td>125</td>
+                <td>94</td>
+                <td>5</td>
+                
+                <td>20</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="31 145">21%</td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+    <p id="no_rows">
+        No items found using the specified filter.
+    </p>
+</div>
+
+<div id="footer">
+    <div class="content">
+        <p>
+            <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.1</a>,
+            created at 2018-09-12 14:18
+        </p>
+    </div>
+</div>
+
+</body>
+</html>
