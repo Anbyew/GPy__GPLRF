@@ -744,6 +744,22 @@ class DGPLVM(Prior):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # ******************************************
 from scipy.sparse import csgraph
 class GPLRF(Prior):
@@ -755,9 +771,25 @@ class GPLRF(Prior):
     .. Note:: GPLRF for Classification paper implementation
 
     """
+    _instances = []
     domain = _REAL
-    def __new__(cls, alpha, W, x_shape): 
-        return super(GPLRF, cls).__new__(cls, alpha, W, x_shape)#########TODO: MODIFY THE NEW FUNCTION
+    def __new__(cls, alpha, W, x_shape):  # Singleton:
+        if cls._instances:
+            cls._instances[:] = [instance for instance in cls._instances if instance()]
+            for instance in cls._instances:
+                if (instance().alpha == alpha) and (instance().W == W).all() and (instance().x_shape == x_shape):
+                    return instance()
+        newfunc = super(Prior, cls).__new__
+        if newfunc is object.__new__:
+            o = newfunc(cls)  
+        else:
+            o = newfunc(cls, alpha, W, x_shape)            
+        cls._instances.append(weakref.ref(o))
+        return cls._instances[-1]()
+
+    # domain = _REAL
+    # def __new__(cls, alpha, W, x_shape): 
+    #     return super(GPLRF, cls).__new__(cls, alpha, W, x_shape)#########TODO: MODIFY THE NEW FUNCTION
 
     def __init__(self, alpha, W, x_shape):
         self.alpha = alpha
@@ -781,6 +813,15 @@ class GPLRF(Prior):
         return 'GPLRF_prior_Zhong_Bao'
 
 # ******************************************
+
+
+
+
+
+
+
+
+
 
 
 
