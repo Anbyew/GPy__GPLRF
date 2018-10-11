@@ -1,3 +1,4 @@
+
 # Author: Yuwei Bao
 # 95% of the code below come from mrd.py
 
@@ -22,7 +23,7 @@ class GPLMRD(BayesianGPLVMMiniBatch):
     !WARNING: This is bleeding edge code and still in development.
     Functionality may change fundamentally during development!
 
-    Apply MRD to all given datasets Y in Ylist.
+    Apply GPLMRD to all given datasets Y in Ylist.
 
     Y_i in [n x p_i]
 
@@ -32,7 +33,7 @@ class GPLMRD(BayesianGPLVMMiniBatch):
     The samples n in the datasets need
     to match up, whereas the dimensionality p_d can differ.
 
-    :param [array-like] Ylist: List of datasets to apply MRD on
+    :param [array-like] Ylist: List of datasets to apply GPLMRD on
     :param input_dim: latent dimensionality
     :type input_dim: int
     :param array-like X: mean of starting latent space q in [n x q]
@@ -62,7 +63,7 @@ class GPLMRD(BayesianGPLVMMiniBatch):
     def __init__(self, Ylist, input_dim, X=None, X_variance=None,
                  initx = 'PCA', initz = 'permute',
                  num_inducing=10, Z=None, kernel=None,
-                 inference_method=None, likelihoods=None, name='mrd',
+                 inference_method=None, likelihoods=None, name='GPLMRD',
                  Ynames=None, normalizer=False, stochastic=False, batchsize=10):
 
         self.logger = logging.getLogger(self.__class__.__name__)
@@ -75,6 +76,13 @@ class GPLMRD(BayesianGPLVMMiniBatch):
         self.logger.debug("creating observable arrays")
         self.Ylist = [ObsAr(Y) for Y in Ylist]
         #The next line is a fix for Python 3. It replicates the python 2 behaviour from the above comprehension
+
+        #pad the Ylist
+        maxd = max(np.array(Ylist[i]).shape[1] for i in range(len(Ylist)))
+        for yi in Ylist:
+            if np.array(yi).shape[1] < maxd:
+                pass#TODO!!!!!
+
         Y = Ylist[-1]
 
         if Ynames is None:
@@ -114,6 +122,7 @@ class GPLMRD(BayesianGPLVMMiniBatch):
             kernels = kernel
 
         self.variational_prior = NormalPrior()
+        #self.X.mean.set_prior(X_prior) #test???not sure if this will work...
         #self.X = NormalPosterior(X, X_variance)
 
         if likelihoods is None:
@@ -136,32 +145,38 @@ class GPLMRD(BayesianGPLVMMiniBatch):
             batchsize = itertools.repeat(batchsize)
 
         self.bgplvms = []
+        numrow = 0
 
         for i, n, k, l, Y, im, bs in zip(itertools.count(), Ynames, kernels, likelihoods, Ylist, self.inference_method, batchsize):
-            #assert Y.shape[0] == self.num_data, "All datasets need to share the number of datapoints, and those have to correspond to one another"
             md = np.isnan(Y).any()
-            spgp = BayesianGPLVMMiniBatch(Y, input_dim, X, X_variance,
+            Xvari = None
+            if X_variance != None:
+                Xvari = X_variance[numrow:numrow+len(Y),]
+            spgp = BayesianGPLVMMiniBatch(Y, input_dim, X[numrow:numrow+len(Y),], Xvari,
                                           Z=Z, kernel=k, likelihood=l,
                                           inference_method=im, name=n,
                                           normalizer=normalizer,
                                           missing_data=md,
                                           stochastic=stochastic,
                                           batchsize=bs)
-            spgp.kl_factr = 1./len(Ynames)#####TODO
+            
+            #spgp.kl_factr = 1./len(Ynames)#####TODO
+            spgp.kl_factr = 1#####TODO
             spgp.unlink_parameter(spgp.Z)
             spgp.unlink_parameter(spgp.X)
             del spgp.Z
             del spgp.X
             spgp.Z = self.Z
-            spgp.X = self.X
+            spgp.X = self.X[numrow:numrow+len(Y),]
+            spgp.numrow = numrow
             self.link_parameter(spgp, i+2)
             self.bgplvms.append(spgp)
+            numrow += len(Y)
 
         b = self.bgplvms[0]
         self.posterior = b.posterior
         self.kern = b.kern
         self.likelihood = b.likelihood
-
         self.logger.info("init done")
 
     def parameters_changed(self):
@@ -177,9 +192,9 @@ class GPLMRD(BayesianGPLVMMiniBatch):
             #grad_dict = b.full_values
 
             if self.has_uncertain_inputs():
-                self.X.gradient += b._Xgrad
+                self.X.gradient[b.numrow:b.numrow+len(b._Xgrad),] += b._Xgrad
             else:
-                self.X.gradient += b._Xgrad
+                self.X.gradient[b.numrow:b.numrow+len(b._Xgrad),] += b._Xgrad
 
         #if self.has_uncertain_inputs():
         #    # update for the KL divergence
@@ -193,18 +208,22 @@ class GPLMRD(BayesianGPLVMMiniBatch):
     def _init_X(self, init='PCA', Ylist=None):
         if Ylist is None:
             Ylist = self.Ylist
+        # if init in "PCA_concat":
+        #     X, fracs = initialize_latent('PCA', self.input_dim, np.vstack(Ylist))
+        #     fracs = [fracs]*len(Ylist)
+        Xrowdim = sum(np.array(Yi).shape[0] for Yi in Ylist)
+
         if init in "PCA_concat":
-            X, fracs = initialize_latent('PCA', self.input_dim, np.hstack(Ylist))
-            fracs = [fracs]*len(Ylist)
-        elif init in "PCA_single":
-            X = np.zeros((Ylist[0].shape[0], self.input_dim))
-            fracs = np.empty((len(Ylist), self.input_dim))
-            for qs, Y in zip(np.array_split(np.arange(self.input_dim), len(Ylist)), Ylist):
-                x, frcs = initialize_latent('PCA', len(qs), Y)
-                X[:, qs] = x
-                fracs[:, qs] = frcs
+            Xtp = []
+            Ftp = []
+            for Y in Ylist:
+                x, frcs = initialize_latent('PCA', self.input_dim, Y)
+                Xtp.append(x)
+                Ftp.append(frcs)
+            X = np.vstack(Xtp)
+            fracs = np.vstack(Ftp)
         else: # init == 'random':
-            X = np.random.randn(Ylist[0].shape[0], self.input_dim)
+            X = np.random.randn(Xrowdim, self.input_dim)
             fracs = X.var(0)
             fracs = [fracs]*len(Ylist)
         X -= X.mean()
@@ -218,16 +237,16 @@ class GPLMRD(BayesianGPLVMMiniBatch):
             Z = np.random.randn(self.num_inducing, self.input_dim) * X.var()
         return Z
 
-    # def predict(self, Xnew, full_cov=False, Y_metadata=None, kern=None, Yindex=0):
-    #     """
-    #     Prediction for data set Yindex[default=0].
-    #     This predicts the output mean and variance for the dataset given in Ylist[Yindex]
-    #     """
-    #     b = self.bgplvms[Yindex]
-    #     self.posterior = b.posterior
-    #     self.kern = b.kern
-    #     self.likelihood = b.likelihood
-    #     return super(GPLMRD, self).predict(Xnew, full_cov, Y_metadata, kern)
+    def predict(self, Xnew, full_cov=False, Y_metadata=None, kern=None, Yindex=0):
+        """
+        Prediction for data set Yindex[default=0].
+        This predicts the output mean and variance for the dataset given in Ylist[Yindex]
+        """
+        b = self.bgplvms[Yindex]
+        self.posterior = b.posterior
+        self.kern = b.kern
+        self.likelihood = b.likelihood
+        return super(GPLMRD, self).predict(Xnew, full_cov, Y_metadata, kern)
 
     #===============================================================================
     # TODO: Predict! Maybe even change to several bgplvms, which share an X?
@@ -299,59 +318,61 @@ class GPLMRD(BayesianGPLVMMiniBatch):
         self.likelihood = self.bgplvms[0].likelihood
         self.parameters_changed()
 
-    # def factorize_space(self, threshold=0.005, printOut=False, views=None):
-    #     """
-    #     Given a trained MRD model, this function looks at the optimized ARD weights (lengthscales)
-    #     and decides which part of the latent space is shared across views or private, according to a threshold.
-    #     The threshold is applied after all weights are normalized so that the maximum value is 1.
-    #     """
-    #     M = len(self.bgplvms)
-    #     if views is None:
-    #         # There are some small modifications needed to make this work for M > 2 (currently the code
-    #         # takes account of this, but it's not right there)
-    #         if M is not 2:
-    #             raise NotImplementedError("Not implemented for M > 2")
-    #         obsMod = [0]
-    #         infMod = 1
-    #     else:
-    #         obsMod = views[0]
-    #         infMod = views[1]
+    def factorize_space(self, threshold=0.005, printOut=False, views=None):
+        """
+        Given a trained GPLMRD model, this function looks at the optimized ARD weights (lengthscales)
+        and decides which part of the latent space is shared across views or private, according to a threshold.
+        The threshold is applied after all weights are normalized so that the maximum value is 1.
+        """
+        M = len(self.bgplvms)
+        if views is None:
+            # There are some small modifications needed to make this work for M > 2 (currently the code
+            # takes account of this, but it's not right there)
+            if M is not 2:
+                raise NotImplementedError("Not implemented for M > 2")
+            obsMod = [0]
+            infMod = 1
+        else:
+            obsMod = views[0]
+            infMod = views[1]
 
-    #     scObs = [None] * len(obsMod)
-    #     for i in range(0,len(obsMod)):
-    #         # WARNING: the [0] in the end assumes that the ARD kernel (if there's addition) is the 1st one
-    #         scObs[i] = np.atleast_2d(self.bgplvms[obsMod[i]].kern.input_sensitivity(summarize=False))[0]
-    #         # Normalise to have max 1
-    #         scObs[i] /= np.max(scObs[i])
-    #     scInf = np.atleast_2d(self.bgplvms[infMod].kern.input_sensitivity(summarize=False))[0]
-    #     scInf /= np.max(scInf)
+        scObs = [None] * len(obsMod)
+        for i in range(0,len(obsMod)):
+            # WARNING: the [0] in the end assumes that the ARD kernel (if there's addition) is the 1st one
+            scObs[i] = np.atleast_2d(self.bgplvms[obsMod[i]].kern.input_sensitivity(summarize=False))[0]
+            # Normalise to have max 1
+            scObs[i] /= np.max(scObs[i])
+        scInf = np.atleast_2d(self.bgplvms[infMod].kern.input_sensitivity(summarize=False))[0]
+        scInf /= np.max(scInf)
 
-    #     retainedScales = [None]*(len(obsMod)+1)
-    #     for i in range(0,len(obsMod)):
-    #         retainedScales[obsMod[i]] = np.where(scObs[i] > threshold)[0]
-    #     retainedScales[infMod] = np.where(scInf > threshold)[0]
+        retainedScales = [None]*(len(obsMod)+1)
+        for i in range(0,len(obsMod)):
+            retainedScales[obsMod[i]] = np.where(scObs[i] > threshold)[0]
+        retainedScales[infMod] = np.where(scInf > threshold)[0]
 
-    #     for i in range(len(retainedScales)):
-    #         retainedScales[i] = [k for k in retainedScales[i]] # Transform array to list
+        for i in range(len(retainedScales)):
+            retainedScales[i] = [k for k in retainedScales[i]] # Transform array to list
 
-    #     sharedDims = set(retainedScales[obsMod[0]]).intersection(set(retainedScales[infMod]))
-    #     for i in range(1,len(obsMod)):
-    #         sharedDims = sharedDims.intersection(set(retainedScales[obsMod[i]]))
-    #     privateDims = [None]*M
-    #     for i in range(0,len(retainedScales)):
-    #         privateDims[i] = set(retainedScales[i]).difference(sharedDims)
-    #         privateDims[i] = [k for k in privateDims[i]]        # Transform set to list
-    #     sharedDims = [k for k in sharedDims]                    # Transform set to list
+        sharedDims = set(retainedScales[obsMod[0]]).intersection(set(retainedScales[infMod]))
+        for i in range(1,len(obsMod)):
+            sharedDims = sharedDims.intersection(set(retainedScales[obsMod[i]]))
+        privateDims = [None]*M
+        for i in range(0,len(retainedScales)):
+            privateDims[i] = set(retainedScales[i]).difference(sharedDims)
+            privateDims[i] = [k for k in privateDims[i]]        # Transform set to list
+        sharedDims = [k for k in sharedDims]                    # Transform set to list
 
-    #     sharedDims.sort()
-    #     for i in range(len(privateDims)):
-    #         privateDims[i].sort()
+        sharedDims.sort()
+        for i in range(len(privateDims)):
+            privateDims[i].sort()
 
-    #     if printOut:
-    #         print('# Shared dimensions: ' + str(sharedDims))
-    #         for i in range(len(retainedScales)):
-    #             print('# Private dimensions model ' + str(i) + ':' + str(privateDims[i]))
+        if printOut:
+            print('# Shared dimensions: ' + str(sharedDims))
+            for i in range(len(retainedScales)):
+                print('# Private dimensions model ' + str(i) + ':' + str(privateDims[i]))
 
-    #     return sharedDims, privateDims
+        return sharedDims, privateDims
+
+
 
 

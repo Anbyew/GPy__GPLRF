@@ -110,7 +110,7 @@ class VarDTC(LatentFunctionInference):
                 else:
                     psi2_beta = (psi2 * precision[:, :, None]).sum(0)
             else:
-                if psi2 is None:
+                if psi2 is None:#TODO, X is not valid here!!!
                     psi2_beta = kern.psi2(Z,X) * precision
                 elif psi2.ndim == 3:
                     psi2_beta = psi2.sum(0) * precision
