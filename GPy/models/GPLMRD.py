@@ -7,6 +7,7 @@
 
 import numpy as np
 import itertools, logging
+import pdb#test
 
 from ..kern import Kern
 from ..core.parameterization.variational import NormalPrior
@@ -77,12 +78,6 @@ class GPLMRD(BayesianGPLVMMiniBatch):
         self.Ylist = [ObsAr(Y) for Y in Ylist]
         #The next line is a fix for Python 3. It replicates the python 2 behaviour from the above comprehension
 
-        #pad the Ylist
-        maxd = max(np.array(Ylist[i]).shape[1] for i in range(len(Ylist)))
-        for yi in Ylist:
-            if np.array(yi).shape[1] < maxd:
-                pass#TODO!!!!!
-
         Y = Ylist[-1]
 
         if Ynames is None:
@@ -102,6 +97,10 @@ class GPLMRD(BayesianGPLVMMiniBatch):
         else:
             fracs = [X.var(0)]*len(Ylist)
 
+        #test
+        print("what is fracs?")
+        print(fracs)
+
         Z = self._init_Z(initz, X)
         self.Z = Param('inducing inputs', Z)
         self.num_inducing = self.Z.shape[0] # ensure M==N if M>N
@@ -110,7 +109,8 @@ class GPLMRD(BayesianGPLVMMiniBatch):
         self.logger.info("building kernels")
         if kernel is None:
             from ..kern import RBF
-            kernels = [RBF(input_dim, ARD=1, lengthscale=1./fracs[i]) for i in range(len(Ylist))]
+            kernels = [RBF(input_dim) for i in range(len(Ylist))]
+            # kernels = [RBF(input_dim, ARD = 1, lengthscale=1./fracs[i]) for i in range(len(Ylist))]#ard=1
         elif isinstance(kernel, Kern):
             kernels = []
             for i in range(len(Ylist)):
@@ -122,17 +122,17 @@ class GPLMRD(BayesianGPLVMMiniBatch):
             kernels = kernel
 
         self.variational_prior = NormalPrior()
-        #self.X.mean.set_prior(X_prior) #test???not sure if this will work...
+        #self.X.mean.set_prior(X_prior) #
+        #???not sure if this will work...
         #self.X = NormalPosterior(X, X_variance)
-
         if likelihoods is None:
             likelihoods = [Gaussian(name='Gaussian_noise'.format(i)) for i in range(len(Ylist))]
         else: likelihoods = likelihoods
-
         self.logger.info("adding X and Z")
+
         super(GPLMRD, self).__init__(Y, input_dim, X=X, X_variance=X_variance, num_inducing=num_inducing,
                  Z=self.Z, kernel=None, inference_method=self.inference_method, likelihood=Gaussian(),
-                 name='manifold relevance determination', normalizer=None,
+                 name='GPLMRD', normalizer=None,
                  missing_data=False, stochastic=False, batchsize=1)
 
         self._log_marginal_likelihood = 0
@@ -152,6 +152,7 @@ class GPLMRD(BayesianGPLVMMiniBatch):
             Xvari = None
             if X_variance != None:
                 Xvari = X_variance[numrow:numrow+len(Y),]
+
             spgp = BayesianGPLVMMiniBatch(Y, input_dim, X[numrow:numrow+len(Y),], Xvari,
                                           Z=Z, kernel=k, likelihood=l,
                                           inference_method=im, name=n,
@@ -160,14 +161,12 @@ class GPLMRD(BayesianGPLVMMiniBatch):
                                           stochastic=stochastic,
                                           batchsize=bs)
             
-            #spgp.kl_factr = 1./len(Ynames)#####TODO
-            spgp.kl_factr = 1#####TODO
+            #spgp.kl_factr = 1./len(Ynames)
+            spgp.kl_factr = 1.
             spgp.unlink_parameter(spgp.Z)
-            spgp.unlink_parameter(spgp.X)
             del spgp.Z
-            del spgp.X
             spgp.Z = self.Z
-            spgp.X = self.X[numrow:numrow+len(Y),]
+
             spgp.numrow = numrow
             self.link_parameter(spgp, i+2)
             self.bgplvms.append(spgp)
@@ -179,7 +178,12 @@ class GPLMRD(BayesianGPLVMMiniBatch):
         self.likelihood = b.likelihood
         self.logger.info("init done")
 
+
+
     def parameters_changed(self):
+        #test
+        print("ever here 1?")
+
         self._log_marginal_likelihood = 0
         self.Z.gradient[:] = 0.
         self.X.gradient[:] = 0.
@@ -188,19 +192,11 @@ class GPLMRD(BayesianGPLVMMiniBatch):
 
             self.logger.info('working on im <{}>'.format(hex(id(i))))
             self.Z.gradient[:] += b._Zgrad  # b.Z.gradient  # full_values['Zgrad']
+            self.X.gradient[b.numrow:b.numrow+len(b._Xgrad),] += b._Xgrad
+        #test
+        from numpy import linalg as LA
+        print(LA.norm(self.X.gradient))
 
-            #grad_dict = b.full_values
-
-            if self.has_uncertain_inputs():
-                self.X.gradient[b.numrow:b.numrow+len(b._Xgrad),] += b._Xgrad
-            else:
-                self.X.gradient[b.numrow:b.numrow+len(b._Xgrad),] += b._Xgrad
-
-        #if self.has_uncertain_inputs():
-        #    # update for the KL divergence
-        #    self.variational_prior.update_gradients_KL(self.X)
-        #    self._log_marginal_likelihood -= self.variational_prior.KL_divergence(self.X)
-        #    pass
 
     def log_likelihood(self):
         return self._log_marginal_likelihood
@@ -208,11 +204,8 @@ class GPLMRD(BayesianGPLVMMiniBatch):
     def _init_X(self, init='PCA', Ylist=None):
         if Ylist is None:
             Ylist = self.Ylist
-        # if init in "PCA_concat":
-        #     X, fracs = initialize_latent('PCA', self.input_dim, np.vstack(Ylist))
-        #     fracs = [fracs]*len(Ylist)
-        Xrowdim = sum(np.array(Yi).shape[0] for Yi in Ylist)
 
+        Xrowdim = sum(np.array(Yi).shape[0] for Yi in Ylist)
         if init in "PCA_concat":
             Xtp = []
             Ftp = []

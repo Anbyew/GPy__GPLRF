@@ -161,6 +161,7 @@ class MRD(BayesianGPLVMMiniBatch):
 
         self.logger.info("init done")
 
+
     def parameters_changed(self):
         self._log_marginal_likelihood = 0
         self.Z.gradient[:] = 0.

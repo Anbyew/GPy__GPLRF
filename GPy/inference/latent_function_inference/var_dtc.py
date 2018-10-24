@@ -64,7 +64,6 @@ class VarDTC(LatentFunctionInference):
         return Y * prec # TODO cache this, and make it effective
 
     def inference(self, kern, X, Z, likelihood, Y, Y_metadata=None, mean_function=None, precision=None, Lm=None, dL_dKmm=None, psi0=None, psi1=None, psi2=None, Z_tilde=None):
-
         num_data, output_dim = Y.shape
         num_inducing = Z.shape[0]
 
@@ -97,7 +96,6 @@ class VarDTC(LatentFunctionInference):
             Kmm = tdot(Lm)
             symmetrify(Kmm)
 
-
         # The rather complex computations of A, and the psi stats
         if uncertain_inputs:
             if psi0 is None:
@@ -110,7 +108,7 @@ class VarDTC(LatentFunctionInference):
                 else:
                     psi2_beta = (psi2 * precision[:, :, None]).sum(0)
             else:
-                if psi2 is None:#TODO, X is not valid here!!!
+                if psi2 is None:
                     psi2_beta = kern.psi2(Z,X) * precision
                 elif psi2.ndim == 3:
                     psi2_beta = psi2.sum(0) * precision
