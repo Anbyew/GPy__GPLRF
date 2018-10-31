@@ -19,6 +19,8 @@ from ..likelihoods import Gaussian
 from ..util.initialization import initialize_latent
 from ..models.bayesian_gplvm_minibatch import BayesianGPLVMMiniBatch
 
+from ..core.parameterization.variational import NormalPosterior
+
 class GPLMRD(BayesianGPLVMMiniBatch):
     """
     !WARNING: This is bleeding edge code and still in development.
@@ -142,6 +144,7 @@ class GPLMRD(BayesianGPLVMMiniBatch):
         self.bgplvms = []
         numrow = 0
 
+
         for i, n, k, l, Y, im, bs in zip(itertools.count(), Ynames, kernels, likelihoods, Ylist, self.inference_method, batchsize):
             md = np.isnan(Y).any()
             Xvari = None
@@ -156,16 +159,19 @@ class GPLMRD(BayesianGPLVMMiniBatch):
                                           stochastic=stochastic,
                                           batchsize=bs)
             
-            spgp.kl_factr = 1./len(Ynames)
-            #spgp.kl_factr = 1.
+            #spgp.kl_factr = 1./len(Ynames)
+            spgp.kl_factr = 1.
             spgp.unlink_parameter(spgp.Z)
             del spgp.Z
+            #del spgp.X
             spgp.Z = self.Z
+            #spgp.X = self.X[numrow:numrow+len(Y),]
 
             spgp.numrow = numrow
             self.link_parameter(spgp, i+2)
             self.bgplvms.append(spgp)
             numrow += len(Y)
+
 
         b = self.bgplvms[0]
         self.posterior = b.posterior
@@ -176,21 +182,35 @@ class GPLMRD(BayesianGPLVMMiniBatch):
 
 
     def parameters_changed(self):
-        #test
-        print("ever here 1?")
-
         self._log_marginal_likelihood = 0
         self.Z.gradient[:] = 0.
         self.X.gradient[:] = 0.
+        meanstk = []
+        varstk = []
+        xstk = []
         for b, i in zip(self.bgplvms, self.inference_method):
-            self._log_marginal_likelihood += b._log_marginal_likelihood
+            self._log_marginal_likelihood += 1./len(self.bgplvms) * b._log_marginal_likelihood
 
             self.logger.info('working on im <{}>'.format(hex(id(i))))
             self.Z.gradient[:] += b._Zgrad  # b.Z.gradient  # full_values['Zgrad']
             self.X.gradient[b.numrow:b.numrow+len(b._Xgrad),] += b._Xgrad
+            #self.X.gradient[:len(b._Xgrad),] += b._Xgrad
+
+            #test
+            # meanstk.append(b.X.mean)
+            # varstk.append(b.X.variance)
+            # xstk.append(b.X)
+            # print("")
+        
         #test
-        from numpy import linalg as LA
-        print(LA.norm(self.X.gradient))
+        #self.X = NormalPosterior(np.vstack(meanstk), np.vstack(varstk))
+        #self.X = np.vstack(xstk)
+        # self.X.mean = np.vstack(meanstk)
+        # self.X.variance = np.vstack(varstk)
+        #test
+        # from numpy import linalg as LA
+        # print(LA.norm(self.X.gradient))
+        # print("")
 
 
     def log_likelihood(self):
