@@ -207,7 +207,6 @@ class GPLMRD(BayesianGPLVMMiniBatch):
         #self.X = np.vstack(xstk)
         # self.X.mean = np.vstack(meanstk)
         # self.X.variance = np.vstack(varstk)
-        #test
         # from numpy import linalg as LA
         # print(LA.norm(self.X.gradient))
         # print("")
