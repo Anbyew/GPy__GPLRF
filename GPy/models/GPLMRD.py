@@ -144,7 +144,6 @@ class GPLMRD(BayesianGPLVMMiniBatch):
         self.bgplvms = []
         numrow = 0
 
-
         for i, n, k, l, Y, im, bs in zip(itertools.count(), Ynames, kernels, likelihoods, Ylist, self.inference_method, batchsize):
             md = np.isnan(Y).any()
             Xvari = None
@@ -185,28 +184,23 @@ class GPLMRD(BayesianGPLVMMiniBatch):
         self._log_marginal_likelihood = 0
         self.Z.gradient[:] = 0.
         self.X.gradient[:] = 0.
+
+        #test
         meanstk = []
         varstk = []
-        xstk = []
+        for b in self.bgplvms:
+            meanstk.append(b.X.mean)
+            varstk.append(b.X.variance)
+        self.X = NormalPosterior(np.vstack(meanstk), np.vstack(varstk))
+
         for b, i in zip(self.bgplvms, self.inference_method):
             self._log_marginal_likelihood += 1./len(self.bgplvms) * b._log_marginal_likelihood
 
             self.logger.info('working on im <{}>'.format(hex(id(i))))
             self.Z.gradient[:] += b._Zgrad  # b.Z.gradient  # full_values['Zgrad']
             self.X.gradient[b.numrow:b.numrow+len(b._Xgrad),] += b._Xgrad
-            #self.X.gradient[:len(b._Xgrad),] += b._Xgrad
 
-            #test
-            # meanstk.append(b.X.mean)
-            # varstk.append(b.X.variance)
-            # xstk.append(b.X)
-            # print("")
-        
         #test
-        #self.X = NormalPosterior(np.vstack(meanstk), np.vstack(varstk))
-        #self.X = np.vstack(xstk)
-        # self.X.mean = np.vstack(meanstk)
-        # self.X.variance = np.vstack(varstk)
         # from numpy import linalg as LA
         # print(LA.norm(self.X.gradient))
         # print("")
