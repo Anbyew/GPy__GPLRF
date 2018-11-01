@@ -119,7 +119,7 @@ class GPLMRD(BayesianGPLVMMiniBatch):
             assert all([isinstance(k, Kern) for k in kernel]), "invalid kernel object detected!"
             kernels = kernel
 
-        self.variational_prior = NormalPrior()
+        #self.variational_prior = NormalPrior()
         
         if likelihoods is None:
             likelihoods = [Gaussian(name='Gaussian_noise'.format(i)) for i in range(len(Ylist))]
@@ -131,7 +131,8 @@ class GPLMRD(BayesianGPLVMMiniBatch):
                  name='GPLMRD', normalizer=None,
                  missing_data=False, stochastic=False, batchsize=1)
 
-        self.X.mean.set_prior(X_prior)
+        if(X_prior != None):
+            self.X.mean.set_prior(X_prior)
 
         self._log_marginal_likelihood = 0
         self.unlink_parameter(self.likelihood)
@@ -186,6 +187,8 @@ class GPLMRD(BayesianGPLVMMiniBatch):
         self.X.gradient[:] = 0.
 
         #test
+        #print("parameters_changed%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+
         meanstk = []
         varstk = []
         for b in self.bgplvms:
@@ -193,9 +196,10 @@ class GPLMRD(BayesianGPLVMMiniBatch):
             varstk.append(b.X.variance)
         self.X = NormalPosterior(np.vstack(meanstk), np.vstack(varstk))
 
+        #print(self.X.mean[:5,])
+
         for b, i in zip(self.bgplvms, self.inference_method):
             self._log_marginal_likelihood += 1./len(self.bgplvms) * b._log_marginal_likelihood
-
             self.logger.info('working on im <{}>'.format(hex(id(i))))
             self.Z.gradient[:] += b._Zgrad  # b.Z.gradient  # full_values['Zgrad']
             self.X.gradient[b.numrow:b.numrow+len(b._Xgrad),] += b._Xgrad
@@ -203,7 +207,12 @@ class GPLMRD(BayesianGPLVMMiniBatch):
         #test
         # from numpy import linalg as LA
         # print(LA.norm(self.X.gradient))
-        # print("")
+        #print(self.X.mean[:5,])
+        self._log_marginal_likelihood += self.log_prior()
+        #print("")
+
+        #Theoretically, after self.X is updated by the gradients, the updated X should be reflected back to Yi. 
+        #BUT....WHAT THE HELL.......WHERE THE HELL AM I GONNA DO THAT??
 
 
     def log_likelihood(self):
