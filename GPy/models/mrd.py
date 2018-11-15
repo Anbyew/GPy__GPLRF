@@ -56,7 +56,7 @@ class MRD(BayesianGPLVMMiniBatch):
     :param bool stochastic: Should this model be using stochastic gradient descent over the dimensions?
     :param bool|[bool] batchsize: either one batchsize for all, or one batchsize per dataset.
     """
-    def __init__(self, Ylist, input_dim, X=None, X_variance=None,
+    def __init__(self, Ylist, input_dim, X_prior, X=None, X_variance=None,
                  initx = 'PCA', initz = 'permute',
                  num_inducing=10, Z=None, kernel=None,
                  inference_method=None, likelihoods=None, name='mrd',
@@ -122,6 +122,9 @@ class MRD(BayesianGPLVMMiniBatch):
                  Z=self.Z, kernel=None, inference_method=self.inference_method, likelihood=Gaussian(),
                  name='manifold relevance determination', normalizer=None,
                  missing_data=False, stochastic=False, batchsize=1)
+
+        if(X_prior != None):
+            self.X.mean.set_prior(X_prior)
 
         self._log_marginal_likelihood = 0
 
