@@ -217,12 +217,18 @@ class GPLMRD(BayesianGPLVMMiniBatch):
 			xvarg[bxglen:int(bxglen+len(b._Xgrad)/2),] += b._Xgrad[int(len(b._Xgrad)/2):,]
 			bxglen += int(len(b._Xgrad)/2)
 
-			# if(b.name == "Y0"):
-			# 	print(b._Xgrad[:3,])
-
+		#test
+		# print(xmeang.shape)
+		# print(xvarg.shape)
+		# print(self._log_marginal_likelihood)
+		# print("")
+		
+		self.X.gradient -= np.concatenate((xmeang, xvarg), axis=None)
+		
 
 		# from numpy import linalg as LA
 		# print(LA.norm(self.X.gradient))
+		# print("")
 
 		# self._log_marginal_likelihood += self.log_prior()
 
