@@ -8,6 +8,7 @@
 import numpy as np
 import itertools, logging
 import pdb#test
+import numpy.ctypeslib as clib
 
 from ..kern import Kern
 from ..core.parameterization.variational import NormalPrior
@@ -106,13 +107,14 @@ class GPLMRD(BayesianGPLVMMiniBatch):
 		# sort out the kernels
 		self.logger.info("building kernels")
 		if kernel is None:
-			from ..kern import NWRBF
-			#kernels = [RBF(input_dim) for i in range(len(Ylist))] 
-			kernels = []
-			numrow = 0
-			for i in range(len(Ylist)):
-				kernels.append(NWRBF(input_dim, numrow, Ylist[i].shape[0]))
-				numrow += Ylist[i].shape[0]
+			from ..kern import RBF
+			kernels = [RBF(input_dim) for i in range(len(Ylist))] 
+			# from ..kern import NWRBF
+			# kernels = []
+			# numrow = 0
+			# for i in range(len(Ylist)):
+			# 	kernels.append(NWRBF(input_dim, numrow, Ylist[i].shape[0]))
+			# 	numrow += Ylist[i].shape[0]
 			# kernels = [RBF(input_dim, ARD = 1, lengthscale=1./fracs[i]) for i in range(len(Ylist))]#ard=1
 		elif isinstance(kernel, Kern):
 			kernels = []
@@ -157,7 +159,8 @@ class GPLMRD(BayesianGPLVMMiniBatch):
 			if X_variance != None:
 				Xvari = X_variance[numrow:numrow+len(Y),]
 
-			spgp = BayesianGPLVMMiniBatch(Y, input_dim, X, Xvari,
+			Xc = clib.as_array(X[numrow:numrow+len(Y),], shape=Y.shape)
+			spgp = BayesianGPLVMMiniBatch(Y, input_dim, Xc, Xvari,
 										  Z=Z, kernel=k, likelihood=l,
 										  inference_method=im, name=n,
 										  normalizer=normalizer,
@@ -188,66 +191,27 @@ class GPLMRD(BayesianGPLVMMiniBatch):
 
 
 	def parameters_changed(self):
-
 		self._log_marginal_likelihood = 0
 		self.Z.gradient[:] = 0.
 		self.X.gradient[:] = 0.
 
-		meanstk = []
-		varstk = []
-
-		tdim = self.bgplvms[0].X.mean.shape[1]
-		tylen = []
-
-		for b in self.bgplvms:
-			meanstk.append(b.X.mean)
-			varstk.append(b.X.variance)
-			tylen.append(b.X.mean.shape[0])
-
-		
-		#self.X = NormalPosterior(np.vstack(meanstk), np.vstack(varstk))
-		#self.X.mean.set_prior(self.xxprior)
-
-
-
-		xmeang = np.full((sum(tylen)*tdim,), 0.)
-		xvarg = np.full((sum(tylen)*tdim,), 0.)
+		xmeang = np.full((self.X.mean.shape[0] * self.X.mean.shape[1],), 0.)
+		xvarg = np.full((self.X.variance.shape[0] * self.X.variance.shape[1],), 0.)
 		bxglen = 0
-		
 
 		for b, i in zip(self.bgplvms, self.inference_method):
 			self._log_marginal_likelihood += 1./len(self.bgplvms) * b._log_marginal_likelihood
 			self.logger.info('working on im <{}>'.format(hex(id(i))))
 			self.Z.gradient[:] += b._Zgrad
+			#self.X.gradient += b._Xgrad
 
 			xmeang[bxglen:int(bxglen+len(b._Xgrad)/2),] += b._Xgrad[:int(len(b._Xgrad)/2),]
 			xvarg[bxglen:int(bxglen+len(b._Xgrad)/2),] += b._Xgrad[int(len(b._Xgrad)/2):,]
 			bxglen += int(len(b._Xgrad)/2)
 
+		self.X.gradient -= np.concatenate((xmeang, xvarg), axis=None)
 
-		# self.X.gradient += 0.01 * np.concatenate((xmeang, xvarg), axis=None)
 
-		# j = 0
-		# for b, i in zip(self.bgplvms, self.inference_method):
-		# 	b.X = NormalPosterior(np.array(self.X.mean[b.numrow:b.numrow+tylen[j]]), np.array(self.X.variance[b.numrow:b.numrow+tylen[j]]))
-		# 	j += 1
-
-		# from numpy import linalg as LA
-		# print(LA.norm(self.X.gradient))
-		# print("")
-
-		# self._log_marginal_likelihood += self.log_prior()
-
-		#test
-		#print(self._log_marginal_likelihood)
-
-		# tpXmean = self.X.mean.copy()
-		# tpXvar = self.X.variance.copy()
-
-		# tpXmean += np.reshape(xmeang, (sum(tylen), tdim))
-		# tpXvar += np.reshape(xvarg, (sum(tylen), tdim))
-		# import pdb
-		# pdb.set_trace()
 
 
 	def log_likelihood(self):
