@@ -106,8 +106,13 @@ class GPLMRD(BayesianGPLVMMiniBatch):
 		# sort out the kernels
 		self.logger.info("building kernels")
 		if kernel is None:
-			from ..kern import RBF
-			kernels = [RBF(input_dim) for i in range(len(Ylist))]
+			from ..kern import NWRBF
+			#kernels = [RBF(input_dim) for i in range(len(Ylist))] 
+			kernels = []
+			numrow = 0
+			for i in range(len(Ylist)):
+				kernels.append(NWRBF(input_dim, numrow, Ylist[i].shape[0]))
+				numrow += Ylist[i].shape[0]
 			# kernels = [RBF(input_dim, ARD = 1, lengthscale=1./fracs[i]) for i in range(len(Ylist))]#ard=1
 		elif isinstance(kernel, Kern):
 			kernels = []
@@ -152,7 +157,7 @@ class GPLMRD(BayesianGPLVMMiniBatch):
 			if X_variance != None:
 				Xvari = X_variance[numrow:numrow+len(Y),]
 
-			spgp = BayesianGPLVMMiniBatch(Y, input_dim, X[numrow:numrow+len(Y),], Xvari,
+			spgp = BayesianGPLVMMiniBatch(Y, input_dim, X, Xvari,
 										  Z=Z, kernel=k, likelihood=l,
 										  inference_method=im, name=n,
 										  normalizer=normalizer,
@@ -204,9 +209,11 @@ class GPLMRD(BayesianGPLVMMiniBatch):
 		#self.X.mean.set_prior(self.xxprior)
 
 
+
 		xmeang = np.full((sum(tylen)*tdim,), 0.)
 		xvarg = np.full((sum(tylen)*tdim,), 0.)
 		bxglen = 0
+		
 
 		for b, i in zip(self.bgplvms, self.inference_method):
 			self._log_marginal_likelihood += 1./len(self.bgplvms) * b._log_marginal_likelihood
@@ -217,14 +224,13 @@ class GPLMRD(BayesianGPLVMMiniBatch):
 			xvarg[bxglen:int(bxglen+len(b._Xgrad)/2),] += b._Xgrad[int(len(b._Xgrad)/2):,]
 			bxglen += int(len(b._Xgrad)/2)
 
-		#test
-		# print(xmeang.shape)
-		# print(xvarg.shape)
-		# print(self._log_marginal_likelihood)
-		# print("")
-		
-		self.X.gradient -= np.concatenate((xmeang, xvarg), axis=None)
-		
+
+		# self.X.gradient += 0.01 * np.concatenate((xmeang, xvarg), axis=None)
+
+		# j = 0
+		# for b, i in zip(self.bgplvms, self.inference_method):
+		# 	b.X = NormalPosterior(np.array(self.X.mean[b.numrow:b.numrow+tylen[j]]), np.array(self.X.variance[b.numrow:b.numrow+tylen[j]]))
+		# 	j += 1
 
 		# from numpy import linalg as LA
 		# print(LA.norm(self.X.gradient))
@@ -232,6 +238,8 @@ class GPLMRD(BayesianGPLVMMiniBatch):
 
 		# self._log_marginal_likelihood += self.log_prior()
 
+		#test
+		#print(self._log_marginal_likelihood)
 
 		# tpXmean = self.X.mean.copy()
 		# tpXvar = self.X.variance.copy()
