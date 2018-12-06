@@ -21,6 +21,7 @@ from ..util.initialization import initialize_latent
 from ..models.bayesian_gplvm_minibatch import BayesianGPLVMMiniBatch
 
 from ..core.parameterization.variational import NormalPosterior
+from ..core.parameterization.variational import SliceableNormalPosterior
 
 class GPLMRD(BayesianGPLVMMiniBatch):
 	"""
@@ -107,14 +108,14 @@ class GPLMRD(BayesianGPLVMMiniBatch):
 		# sort out the kernels
 		self.logger.info("building kernels")
 		if kernel is None:
-			from ..kern import RBF
-			kernels = [RBF(input_dim) for i in range(len(Ylist))] 
-			# from ..kern import NWRBF
-			# kernels = []
-			# numrow = 0
-			# for i in range(len(Ylist)):
-			# 	kernels.append(NWRBF(input_dim, numrow, Ylist[i].shape[0]))
-			# 	numrow += Ylist[i].shape[0]
+			#from ..kern import RBF
+			#kernels = [RBF(input_dim) for i in range(len(Ylist))] 
+			from ..kern import NWRBF
+			kernels = []
+			numrow = 0
+			for i in range(len(Ylist)):
+				kernels.append(NWRBF(input_dim, numrow, Ylist[i].shape[0]))
+				numrow += Ylist[i].shape[0]
 			# kernels = [RBF(input_dim, ARD = 1, lengthscale=1./fracs[i]) for i in range(len(Ylist))]#ard=1
 		elif isinstance(kernel, Kern):
 			kernels = []
@@ -159,8 +160,8 @@ class GPLMRD(BayesianGPLVMMiniBatch):
 			if X_variance != None:
 				Xvari = X_variance[numrow:numrow+len(Y),]
 
-			Xc = clib.as_array(X[numrow:numrow+len(Y),], shape=Y.shape)
-			spgp = BayesianGPLVMMiniBatch(Y, input_dim, Xc, Xvari,
+			
+			spgp = BayesianGPLVMMiniBatch(Y, input_dim, X, Xvari,
 										  Z=Z, kernel=k, likelihood=l,
 										  inference_method=im, name=n,
 										  normalizer=normalizer,
@@ -174,7 +175,26 @@ class GPLMRD(BayesianGPLVMMiniBatch):
 			del spgp.Z
 			#del spgp.X
 			spgp.Z = self.Z
+			#spgp.X = self.X
 			#spgp.X = self.X[numrow:numrow+len(Y),]
+
+			#just so that they can be removed in the next step........
+			#self.X.link_parameters(self.X.mean[numrow:(numrow+len(Y)),], self.X.variance[numrow:(numrow+len(Y)),])
+
+			#spgp.X = SliceableNormalPosterior(self.X, numrow, len(Y))
+			
+			# spgp.X.mean = self.X.mean[numrow:numrow+len(Y),]
+			# spgp.X.variance = self.X.variance[numrow:numrow+len(Y),]
+
+
+			# #test
+			# print(self.X.mean[0,])
+			# print(spgp.X.mean[0,])
+			# print("")
+			# self.X.mean[0,0] = 1.11
+			# print(self.X.mean[0,])
+			# print(spgp.X.mean[0,])
+			# print(wtf)
 
 			spgp.numrow = numrow
 			self.link_parameter(spgp, i+2)
@@ -191,6 +211,36 @@ class GPLMRD(BayesianGPLVMMiniBatch):
 
 
 	def parameters_changed(self):
+
+		#print(self.X.mean.shape)
+		#assign the mean values from minibatch to self.X
+		# i = 0
+		# suma = self.bgplvms[i].X.mean.shape[0]
+		# for row in range(self.X.mean.shape[0]):
+		# 	for col in range(self.X.mean.shape[1]):
+		# 		#test
+		# 		print(row)
+		# 		print(col)
+				
+
+		# 		if row < suma: 
+		# 			print("can i do this")
+		# 			tp = self.bgplvms[i].X.mean[row-suma, col]
+		# 			print(tp)
+		# 			self.X.mean[0, 0] = 0.01
+		# 			print("did I just do it")
+		# 		else:
+		# 			i += 1
+		# 			if i >= len(self.bgplvms):
+		# 				break
+		# 			else:
+		# 				suma += self.bgplvms[i].X.mean.shape[0]
+		# 				self.X.mean[row, col] = self.bgplvms[i].X.mean[row-suma, col]
+		# 		print("")
+
+
+
+
 		self._log_marginal_likelihood = 0
 		self.Z.gradient[:] = 0.
 		self.X.gradient[:] = 0.
@@ -209,7 +259,25 @@ class GPLMRD(BayesianGPLVMMiniBatch):
 			xvarg[bxglen:int(bxglen+len(b._Xgrad)/2),] += b._Xgrad[int(len(b._Xgrad)/2):,]
 			bxglen += int(len(b._Xgrad)/2)
 
-		self.X.gradient -= np.concatenate((xmeang, xvarg), axis=None)
+			#test
+			#print(b.X.mean[0,])
+
+			#test
+			# pointer, read_only_flag = b.X.mean.__array_interface__['data']
+			# print(pointer)
+		# 	#test
+		# 	print(b.name)
+		# 	print(id(b.X.mean))
+
+		# print(id(self.X.mean))
+		# print(self.X.mean[0,])
+		# print("")
+
+		self.X.gradient += np.concatenate((xmeang, xvarg), axis=None)
+
+		#test
+		#print(self._log_marginal_likelihood)
+		#print(sum(self.X.gradient))
 
 
 

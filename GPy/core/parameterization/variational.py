@@ -172,6 +172,30 @@ class NormalPosterior(VariationalPosterior):
             + np.sum(np.log(other.variance)) - np.sum(np.log(self.variance))
             )
 
+
+
+
+#test: implement a sliceable normal posterior
+class SliceableNormalPosterior(NormalPosterior):
+    def __init__(self, parent, start, len, name='latent space', *a, **kw):
+        super(VariationalPosterior, self).__init__(name=name, *a, **kw)
+        self.mean = parent.mean[start:(start+len),]
+        self.variance = parent.variance[start:(start+len),]
+        self.ndim = self.mean.ndim
+        self.shape = self.mean.shape
+        self.num_data, self.input_dim = self.mean.shape
+
+        
+        #self.link_parameters(self.mean, self.variance)
+        self.num_data, self.input_dim = self.mean.shape
+        if self.has_uncertain_inputs():
+            assert self.variance.shape == self.mean.shape, "need one variance per sample and dimenion"
+
+        
+
+
+
+
 class SpikeAndSlabPosterior(VariationalPosterior):
     '''
     The SpikeAndSlab distribution for variational approximations.
